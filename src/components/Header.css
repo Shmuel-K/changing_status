@@ -1,4 +1,6 @@
 /* src/components/Header.css */
+
+/* סגנון ראשי של התפריט */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -10,11 +12,13 @@
   z-index: 1000;
 }
 
+/* לוגו */
 .site-header .logo h2 {
   margin: 0;
   color: #fff;
 }
 
+/* ניווט ראשי */
 .site-header nav ul {
   list-style: none;
   display: flex;
@@ -23,6 +27,7 @@
   padding: 0;
 }
 
+/* קישורים בתפריט */
 .site-header nav ul li a {
   color: #e0e0e0;
   text-decoration: none;
@@ -32,4 +37,41 @@
 .site-header nav ul li a.active,
 .site-header nav ul li a:hover {
   color: var(--gold);
+}
+
+/* 🔹 עיצוב תפריט המבורגר 🔹 */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* תפריט ניווט למובייל */
+@media (max-width: 768px) {
+  /* מסתיר את הניווט הראשי */
+  .site-header nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: var(--gray-1);
+    padding: 15px 0;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* מציג את התפריט כאשר הוא פתוח */
+  .site-header nav ul.open {
+    display: flex;
+  }
+
+  /* הצגת כפתור ההמבורגר במובייל */
+  .menu-toggle {
+    display: block;
+  }
 }
