@@ -1,0 +1,35 @@
+/* src/components/Header.css */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--gray-1);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.site-header .logo h2 {
+  margin: 0;
+  color: #fff;
+}
+
+.site-header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header nav ul li a {
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.site-header nav ul li a.active,
+.site-header nav ul li a:hover {
+  color: var(--gold);
+}
