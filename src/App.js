@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Page from './pages/Page';
 import Header from './components/Header';
+import Footer from './components/Footer';  // ייבוא רכיב Footer
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Navigate to="/page/1" replace />} />
         <Route path="/page/:id" element={<Page />} />
       </Routes>
+      <Footer /> {/* רכיב Footer מופיע בכל עמוד */}
     </Router>
   );
 }

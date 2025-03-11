@@ -1,0 +1,18 @@
+/* src/components/Footer.css */
+.site-footer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* אם לא רוצים רקע, אפשר להשאיר את הרקע שקוף */
+  background-color: transparent; 
+  padding: 10px;
+  z-index: 1000; /* כדי להבטיח שהאייקון יהיה מעל התוכן */
+}
+
+.site-footer img {
+  width: 30px;
+  height: 30px;
+}
