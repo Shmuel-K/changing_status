@@ -7,9 +7,19 @@ const Header = () => {
   const location = useLocation();
   const activePage = location.pathname;
   const [isOpen, setIsOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    if (!darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   // Define menu items:
@@ -33,20 +43,24 @@ const Header = () => {
         <button className="menu-toggle" onClick={toggleMenu}>
           ☰
         </button>
-        {/* The menu ul gets the 'open' class if isOpen is true */}
+        {/* Navigation menu */}
         <ul className={isOpen ? 'open' : ''}>
           {menuItems.map(({ pageNum, text }) => (
             <li key={pageNum}>
               <Link
                 to={`/page/${pageNum}`}
                 className={activePage === `/page/${pageNum}` ? 'active' : ''}
-                onClick={() => setIsOpen(false)} // Close menu after clicking a link
+                onClick={() => setIsOpen(false)}
               >
                 {text}
               </Link>
             </li>
           ))}
         </ul>
+        {/* Dark/Light mode toggle button */}
+        <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
+        </button>
       </nav>
     </header>
   );

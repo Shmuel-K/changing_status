@@ -1,24 +1,23 @@
 /* src/components/Header.css */
 
-/* סגנון ראשי של התפריט */
+/* Main header styling */
 .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--gray-1);
+  background: var(--header-bg); /* משתמש במשתנה במקום בערך קבוע */
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-/* לוגו */
 .site-header .logo h2 {
   margin: 0;
-  color: #fff;
+  color: var(--text-color); /* משתמש במשתנה */
 }
 
-/* ניווט ראשי */
+/* Desktop navigation menu */
 .site-header nav ul {
   list-style: none;
   display: flex;
@@ -27,9 +26,8 @@
   padding: 0;
 }
 
-/* קישורים בתפריט */
 .site-header nav ul li a {
-  color: #e0e0e0;
+  color: var(--text-color); /* משתמש במשתנה */
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -39,39 +37,40 @@
   color: var(--gold);
 }
 
-/* 🔹 עיצוב תפריט המבורגר 🔹 */
+/* Hamburger menu button - hidden on desktop by default */
 .menu-toggle {
   display: none;
   font-size: 2rem;
-  color: #fff;
+  color: var(--text-color); /* משתמש במשתנה */
   background: none;
   border: none;
   cursor: pointer;
 }
 
-/* תפריט ניווט למובייל */
+/* Mobile styles */
 @media (max-width: 768px) {
-  /* מסתיר את הניווט הראשי */
+  /* Show the hamburger button */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Hide the navigation menu by default on mobile */
   .site-header nav ul {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 60px;
+    top: 60px; /* Position below the header */
     left: 0;
     width: 100%;
-    background: var(--gray-1);
+    background: var(--header-bg); /* משתמש במשתנה */
     padding: 15px 0;
+    margin: 0;
     text-align: center;
     transition: all 0.3s ease-in-out;
   }
 
-  /* מציג את התפריט כאשר הוא פתוח */
+  /* When open, display the mobile menu */
   .site-header nav ul.open {
     display: flex;
-  }
-
-  /* הצגת כפתור ההמבורגר במובייל */
-  .menu-toggle {
-    display: block;
   }
 }

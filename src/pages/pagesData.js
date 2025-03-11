@@ -18,7 +18,8 @@ const pagesData = [
       "Leverage networking and connections to get your foot in the door"
     ],
     action: null,
-    background: "linear-gradient(45deg, #1B1F24, #23272B)"
+    backgroundDark: "linear-gradient(45deg, #1B1F24, #23272B)",
+    backgroundLight: "linear-gradient(45deg, #ffffff, #f0f0f0)"
   },
   // (2) Step 1
   {
@@ -30,7 +31,8 @@ const pagesData = [
     ],
     bullets: [],
     action: "Write down your target role and a deadline for obtaining your first job.",
-    background: "linear-gradient(45deg, #23272B, #2B3035)"
+    backgroundDark: "linear-gradient(45deg, #23272B, #2B3035)",
+    backgroundLight: "linear-gradient(45deg, #f7f7f7, #eeeeee)"
   },
   // (3) Step 2
   {
@@ -42,7 +44,8 @@ const pagesData = [
     ],
     bullets: [],
     action: "Do a self-assessment, talk to people who have already found a job, and figure out where you stand and what you still need to learn.",
-    background: "linear-gradient(45deg, #2B3035, #33393E)"
+    backgroundDark: "linear-gradient(45deg, #2B3035, #33393E)",
+    backgroundLight: "linear-gradient(45deg, #eeeeee, #dcdcdc)"
   },
   // (4) Step 3
   {
@@ -54,7 +57,8 @@ const pagesData = [
     ],
     bullets: [],
     action: "Create a weekly plan for self-study and implementation, and treat it like a real job.",
-    background: "linear-gradient(45deg, #33393E, #3B4247)"
+    backgroundDark: "linear-gradient(45deg, #33393E, #3B4247)",
+    backgroundLight: "linear-gradient(45deg, #dcdcdc, #c0c0c0)"
   },
   // (5) Step 4
   {
@@ -66,7 +70,8 @@ const pagesData = [
     ],
     bullets: [],
     action: "Identify a real problem in your environment and build a solution. Break the project into smaller development stages.",
-    background: "linear-gradient(45deg, #3B4247, #434A50)"
+    backgroundDark: "linear-gradient(45deg, #3B4247, #434A50)",
+    backgroundLight: "linear-gradient(45deg, #c0c0c0, #a8a8a8)"
   },
   // (6) Step 5
   {
@@ -78,7 +83,8 @@ const pagesData = [
     ],
     bullets: [],
     action: "Start documenting your work process and upload weekly updates.",
-    background: "linear-gradient(45deg, #434A50, #4B5259)"
+    backgroundDark: "linear-gradient(45deg, #434A50, #4B5259)",
+    backgroundLight: "linear-gradient(45deg, #a8a8a8, #909090)"
   },
   // (7) Step 6
   {
@@ -90,7 +96,8 @@ const pagesData = [
     ],
     bullets: [],
     action: "Update your profile with all your projects and new skills.",
-    background: "linear-gradient(45deg, #4B5259, #535A62)"
+    backgroundDark: "linear-gradient(45deg, #4B5259, #535A62)",
+    backgroundLight: "linear-gradient(45deg, #909090, #787878)"
   },
   // (8) Step 7
   {
@@ -102,7 +109,8 @@ const pagesData = [
     ],
     bullets: [],
     action: "Create a custom resume for each role you apply for, emphasizing what’s relevant to that company.",
-    background: "linear-gradient(45deg, #535A62, #5B626B)"
+    backgroundDark: "linear-gradient(45deg, #535A62, #5B626B)",
+    backgroundLight: "linear-gradient(45deg, #787878, #606060)"
   },
   // (9) Step 8
   {
@@ -114,7 +122,8 @@ const pagesData = [
     ],
     bullets: [],
     action: "Do mock interviews with a colleague or mentor, get feedback, and fix what didn’t work.",
-    background: "linear-gradient(45deg, #5B626B, #636A74)"
+    backgroundDark: "linear-gradient(45deg, #5B626B, #636A74)",
+    backgroundLight: "linear-gradient(45deg, #606060, #484848)"
   },
   // (10) Step 9
   {
@@ -126,7 +135,8 @@ const pagesData = [
     ],
     bullets: [],
     action: "After each interview, send an email and request detailed feedback.",
-    background: "linear-gradient(45deg, #636A74, #6B727D)"
+    backgroundDark: "linear-gradient(45deg, #636A74, #6B727D)",
+    backgroundLight: "linear-gradient(45deg, #484848, #303030)"
   },
   // (11) Step 10
   {
@@ -138,7 +148,8 @@ const pagesData = [
     ],
     bullets: [],
     action: "Commit to continuing the process and not giving up when faced with rejections.",
-    background: "linear-gradient(45deg, #6B727D, #737A86)"
+    backgroundDark: "linear-gradient(45deg, #6B727D, #737A86)",
+    backgroundLight: "linear-gradient(45deg, #303030, #181818)"
   },
   // (12) Summary page
   {
@@ -150,7 +161,9 @@ const pagesData = [
     ],
     bullets: [],
     action: "What is the first step you will take today to change your status?",
-    background: "linear-gradient(45deg, #737A86, #737A86)"
+    // נניח שגם כאן נוסיף רקע בהיר
+    backgroundDark: "linear-gradient(45deg, #737A86, #737A86)",
+    backgroundLight: "linear-gradient(45deg, #e0e0e0, #e0e0e0)"
   }
 ];
 
