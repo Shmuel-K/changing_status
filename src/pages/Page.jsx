@@ -53,11 +53,12 @@ const Page = () => {
 
   return (
     <div
-      className="relative h-screen w-full bg-cover bg-center animated-gradient flex items-center justify-center text-center px-8"
-      style={{ background }}
+      className="relative h-screen w-full bg-cover bg-center animated-gradient flex items-center justify-center text-center p-12"
+      style={{ background: background }}
       role="main"
     >
-      <div className="max-w-3xl">
+      {/* Added mt-16 to push the content down from the top */}
+      <div className="max-w-3xl mx-auto p-12 mt-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">{title}</h1>
         {paragraphs.map((para, i) => (
           <p key={i} className="mb-4 leading-relaxed text-lg">
@@ -74,7 +75,7 @@ const Page = () => {
           </ul>
         )}
 
-        {/* "Action to take" button */}
+        {/* "Action to Take" button */}
         {action && (
           <div className="mt-6">
             <button

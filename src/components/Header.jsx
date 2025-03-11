@@ -12,8 +12,8 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
-  // מגדירים את פריטי התפריט:
-  // Opening - עמוד 1, Steps 1-10 - עמודים 2 עד 11, Conclusion - עמוד 12
+  // Define menu items:
+  // Page 1 = "Opening", Pages 2-11 = Steps 1-10, Page 12 = "Conclusion"
   const menuItems = [
     { pageNum: 1, text: 'Opening' },
     ...Array.from({ length: 10 }, (_, i) => ({
@@ -29,17 +29,18 @@ const Header = () => {
         <h2>Changing Status</h2>
       </div>
       <nav>
-        {/* כפתור תפריט המבורגר שיופיע במובייל */}
+        {/* Hamburger menu button (visible on mobile) */}
         <button className="menu-toggle" onClick={toggleMenu}>
           ☰
         </button>
+        {/* The menu ul gets the 'open' class if isOpen is true */}
         <ul className={isOpen ? 'open' : ''}>
           {menuItems.map(({ pageNum, text }) => (
             <li key={pageNum}>
               <Link
                 to={`/page/${pageNum}`}
                 className={activePage === `/page/${pageNum}` ? 'active' : ''}
-                onClick={() => setIsOpen(false)}
+                onClick={() => setIsOpen(false)} // Close menu after clicking a link
               >
                 {text}
               </Link>
