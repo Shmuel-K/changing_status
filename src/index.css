@@ -57,3 +57,8 @@ code {
   --link-color: var(--gold);
   --link-hover-color: var(--gold);
 }
+
+/* כלל עבור אייקוני החצים במצב Dark */
+.dark .arrow-icon {
+  filter: brightness(0) invert(1);
+}

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import pagesData from './pagesData';
+import arrowIcon from '../img/next-svgrepo-com.svg'; // ייבוא האייקון לחצים
 
 const Page = () => {
   const { id } = useParams();
@@ -57,9 +58,7 @@ const Page = () => {
       style={{ background: background }}
       role="main"
     >
-      {/* הסרנו flex items-center justify-center text-center */}
       <div className="container mt-16 text-left">
-        {/* הוספנו text-left כדי לוודא שהטקסט מיושר לשמאל */}
         <h1 className="text-4xl md:text-5xl font-bold mb-6">{title}</h1>
         {paragraphs.map((para, i) => (
           <p key={i} className="mb-4 leading-relaxed text-lg">
@@ -96,19 +95,29 @@ const Page = () => {
           {pageIndex > 0 && (
             <button
               onClick={goPrev}
-              className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+              style={{ background: 'none', border: 'none', padding: 0 }}
               aria-label="Previous Page"
             >
-              Previous
+              <img
+                src={arrowIcon}
+                alt="Previous"
+                className="arrow-icon"
+                style={{ width: '24px', height: '24px', transform: 'rotate(180deg)' }}
+              />
             </button>
           )}
           {pageIndex < pagesData.length - 1 && (
             <button
               onClick={goNext}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+              style={{ background: 'none', border: 'none', padding: 0 }}
               aria-label="Next Page"
             >
-              Next
+              <img
+                src={arrowIcon}
+                alt="Next"
+                className="arrow-icon"
+                style={{ width: '24px', height: '24px' }}
+              />
             </button>
           )}
         </div>

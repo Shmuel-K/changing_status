@@ -1,6 +1,7 @@
 // src/components/Header.jsx
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import darkThemeIcon from '../img/dark-theme-svgrepo-com.svg'; // ייבוא האייקון למצב אור/חושך
 import './Header.css';
 
 const Header = () => {
@@ -23,7 +24,6 @@ const Header = () => {
   };
 
   // Define menu items:
-  // Page 1 = "Opening", Pages 2-11 = Steps 1-10, Page 12 = "Conclusion"
   const menuItems = [
     { pageNum: 1, text: 'Opening' },
     ...Array.from({ length: 10 }, (_, i) => ({
@@ -57,9 +57,17 @@ const Header = () => {
             </li>
           ))}
         </ul>
-        {/* Dark/Light mode toggle button */}
-        <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-          {darkMode ? 'Light Mode' : 'Dark Mode'}
+        {/* Dark/Light mode toggle button using SVG icon ללא רקע/גבול */}
+        <button
+          className="dark-mode-toggle"
+          onClick={toggleDarkMode}
+          style={{ background: 'none', border: 'none', padding: 0 }}
+        >
+          <img
+            src={darkThemeIcon}
+            alt="Toggle dark/light mode"
+            style={{ width: '24px', height: '24px' }}
+          />
         </button>
       </nav>
     </header>
