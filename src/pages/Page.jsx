@@ -75,54 +75,58 @@ const Page = () => {
           </ul>
         )}
 
-        {action && (
-          <div className="mt-6">
-            <button
-              className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
-              onClick={() => setShowAction(!showAction)}
-            >
-              Action to Take
-            </button>
-            {showAction && (
-              <p className="mt-4 text-lg font-semibold text-gray-100 bg-gray-800 p-4 rounded-lg shadow-lg">
-                {action}
-              </p>
+        {/* עטיפת כל הקטע התחתון עם הזחה של 2em */}
+        <div style={{ paddingLeft: '2em' }}>
+          {action && (
+            <div className="mt-6">
+              <button
+                className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+                onClick={() => setShowAction(!showAction)}
+              >
+                Action to Take
+              </button>
+              {showAction && (
+                <p className="mt-4 text-lg font-semibold text-gray-100 bg-gray-800 p-4 rounded-lg shadow-lg">
+                  {action}
+                </p>
+              )}
+            </div>
+          )}
+
+          <div className="mt-8 flex justify-between w-full">
+            {pageIndex > 0 && (
+              <button
+                onClick={goPrev}
+                style={{ background: 'none', border: 'none', padding: 0 }}
+                aria-label="Previous Page"
+              >
+                <img
+                  src={arrowIcon}
+                  alt="Previous"
+                  className="arrow-icon"
+                  style={{ width: '24px', height: '24px', transform: 'rotate(180deg)' }}
+                />
+              </button>
+            )}
+            {pageIndex < pagesData.length - 1 && (
+              <button
+                onClick={goNext}
+                style={{ background: 'none', border: 'none', padding: 0 }}
+                aria-label="Next Page"
+              >
+                <img
+                  src={arrowIcon}
+                  alt="Next"
+                  className="arrow-icon"
+                  style={{ width: '24px', height: '24px' }}
+                />
+              </button>
             )}
           </div>
-        )}
 
-        <div className="mt-8 flex justify-between w-full">
-          {pageIndex > 0 && (
-            <button
-              onClick={goPrev}
-              style={{ background: 'none', border: 'none', padding: 0 }}
-              aria-label="Previous Page"
-            >
-              <img
-                src={arrowIcon}
-                alt="Previous"
-                className="arrow-icon"
-                style={{ width: '24px', height: '24px', transform: 'rotate(180deg)' }}
-              />
-            </button>
-          )}
-          {pageIndex < pagesData.length - 1 && (
-            <button
-              onClick={goNext}
-              style={{ background: 'none', border: 'none', padding: 0 }}
-              aria-label="Next Page"
-            >
-              <img
-                src={arrowIcon}
-                alt="Next"
-                className="arrow-icon"
-                style={{ width: '24px', height: '24px' }}
-              />
-            </button>
-          )}
-        </div>
-        <div className="text-center mt-4 text-lg">
-          Page {pageIndex + 1} of {pagesData.length}
+          <div className="text-center mt-4 text-lg">
+            Page {pageIndex + 1} of {pagesData.length}
+          </div>
         </div>
       </div>
     </div>
