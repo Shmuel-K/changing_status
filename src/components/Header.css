@@ -5,16 +5,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--header-bg); /* משתמש במשתנה במקום בערך קבוע */
+  background: var(--header-bg);
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .site-header .logo h2 {
   margin: 0;
-  color: var(--text-color); /* משתמש במשתנה */
+  color: var(--text-color);
 }
 
 /* Desktop navigation menu */
@@ -27,13 +28,13 @@
 }
 
 .site-header nav ul li a {
-  color: var(--text-color); /* משתמש במשתנה */
+  color: var(--text-color);
   text-decoration: none;
   transition: color 0.3s;
 }
 
-.site-header nav ul li a.active,
-.site-header nav ul li a:hover {
+.site-header nav ul li a:hover,
+.site-header nav ul li a.active {
   color: var(--gold);
 }
 
@@ -41,7 +42,7 @@
 .menu-toggle {
   display: none;
   font-size: 2rem;
-  color: var(--text-color); /* משתמש במשתנה */
+  color: var(--text-color);
   background: none;
   border: none;
   cursor: pointer;
@@ -49,27 +50,24 @@
 
 /* Mobile styles */
 @media (max-width: 768px) {
-  /* Show the hamburger button */
   .menu-toggle {
     display: block;
   }
-
-  /* Hide the navigation menu by default on mobile */
+  
   .site-header nav ul {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 60px; /* Position below the header */
+    top: 60px;
     left: 0;
     width: 100%;
-    background: var(--header-bg); /* משתמש במשתנה */
+    background: var(--header-bg);
     padding: 15px 0;
     margin: 0;
     text-align: center;
     transition: all 0.3s ease-in-out;
   }
-
-  /* When open, display the mobile menu */
+  
   .site-header nav ul.open {
     display: flex;
   }
