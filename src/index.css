@@ -64,9 +64,11 @@ code {
 }
 
 p {
-  text-indent: 2em;
+  padding-left: 2em; /* מוסיף הזחה לכל השורות בפסקה */
+  text-indent: 0; /* מסיר את ההשפעה של text-indent */
 }
-h1 {
-  text-indent: 1em;
+h1, h2, h3, h4, h5, h6 {
+  padding-left: 1em; /* מוסיף הזחה לכל השורות בכותרת */
+  text-indent: 0; /* מסיר את ההשפעה של text-indent */
 }
 
