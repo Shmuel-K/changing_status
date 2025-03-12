@@ -66,7 +66,11 @@ const Header = () => {
           <img
             src={darkThemeIcon}
             alt="Toggle dark/light mode"
-            style={{ width: '24px', height: '24px' }}
+            style={{
+              width: '24px',
+              height: '24px',
+              filter: darkMode ? 'brightness(0) invert(1)' : 'none',
+            }}
           />
         </button>
       </nav>
