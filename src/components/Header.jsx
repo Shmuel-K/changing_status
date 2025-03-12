@@ -70,6 +70,8 @@ const Header = () => {
               width: '24px',
               height: '24px',
               filter: darkMode ? 'brightness(0) invert(1)' : 'none',
+              transform: 'translate(-100px, -22px)', // העברת האייקון קצת שמאלה
+			  
             }}
           />
         </button>
