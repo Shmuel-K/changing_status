@@ -62,3 +62,11 @@ code {
 .dark .arrow-icon {
   filter: brightness(0) invert(1);
 }
+
+p {
+  text-indent: 2em;
+}
+h1 {
+  text-indent: 1em;
+}
+
