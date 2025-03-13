@@ -67,8 +67,18 @@ p {
   padding-left: 2em; /* מוסיף הזחה לכל השורות בפסקה */
   text-indent: 0; /* מסיר את ההשפעה של text-indent */
 }
+
 h1, h2, h3, h4, h5, h6 {
   padding-left: 1em; /* מוסיף הזחה לכל השורות בכותרת */
   text-indent: 0; /* מסיר את ההשפעה של text-indent */
 }
+/*
+action-section. {
+  margin-left: 2em;
+}
 
+indented-section. {
+  padding-left: 2em;
+}
+
+*/
