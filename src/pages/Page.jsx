@@ -2,7 +2,8 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import pagesData from './pagesData';
-import arrowIcon from '../img/next-svgrepo-com.svg'; // ייבוא האייקון לחצים
+import arrowIcon from '../img/next-svgrepo-com.svg'; // אייקון לחצים
+import lightBulbIcon from '../img/light-bulb-svgrepo-com.svg'; // האייקון החדש
 
 const Page = () => {
   const { id } = useParams();
@@ -25,6 +26,7 @@ const Page = () => {
     }
   }, [pageIndex, navigate]);
 
+  // האזנה לגלגלת העכבר
   useEffect(() => {
     if (!valid) return;
     const handleWheel = (e) => {
@@ -46,6 +48,11 @@ const Page = () => {
     return () => window.removeEventListener('wheel', handleWheel);
   }, [pageIndex, goNext, goPrev, valid]);
 
+  // בכל מעבר עמוד, נסגור את ה-Action
+  useEffect(() => {
+    setShowAction(false);
+  }, [pageIndex]);
+
   if (!valid) {
     return <div>Page Not Found</div>;
   }
@@ -55,16 +62,21 @@ const Page = () => {
   return (
     <div
       className="relative h-screen w-full bg-cover bg-center animated-gradient p-12"
-      style={{ background: background }}
+      style={{ background }}
       role="main"
     >
       <div className="container mt-16 text-left">
+        {/* כותרת העמוד */}
         <h1 className="text-4xl md:text-5xl font-bold mb-6">{title}</h1>
+        
+        {/* פסקאות */}
         {paragraphs.map((para, i) => (
           <p key={i} className="mb-4 leading-relaxed text-lg">
             {para}
           </p>
         ))}
+
+        {/* רשימה (בולטים) */}
         {bullets.length > 0 && (
           <ul className="list-disc list-inside mb-4">
             {bullets.map((bullet, i) => (
@@ -75,24 +87,38 @@ const Page = () => {
           </ul>
         )}
 
-        {/* עטיפת כל הקטע התחתון עם הזחה של 2em */}
-        <div style={{ paddingLeft: '2em' }}>
-          {action && (
-            <div className="mt-6">
-              <button
-                className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
-                onClick={() => setShowAction(!showAction)}
-              >
-                Action to Take
-              </button>
-              {showAction && (
-                <p className="mt-4 text-lg font-semibold text-gray-100 bg-gray-800 p-4 rounded-lg shadow-lg">
-                  {action}
-                </p>
-              )}
-            </div>
-          )}
+        {/* קטע Action - החלפנו את הכפתור בטקסט באייקון גדול יותר, ללא מסגרת */}
+        {action && (
+          <div className="mt-6 ml-8">
+            <button
+              onClick={() => setShowAction(!showAction)}
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                cursor: 'pointer',
+              }}
+            >
+              <img
+                src={lightBulbIcon}
+                alt="Action to Take"
+                style={{
+                  width: '100px',
+                  height: '100px',
+                  transform: 'translateX(10px)', // הזחה יותר ימינה
+                }}
+              />
+            </button>
+            {showAction && (
+              <p className="mt-4 text-lg font-semibold text-gray-100 bg-gray-800 p-4 rounded-lg shadow-lg">
+                {action}
+              </p>
+            )}
+          </div>
+        )}
 
+        {/* החלק התחתון - כפתורי Previous/Next וטקסט "Page X of Y" */}
+        <div style={{ paddingLeft: '2em' }}>
           <div className="mt-8 flex justify-between w-full">
             {pageIndex > 0 && (
               <button
@@ -123,7 +149,6 @@ const Page = () => {
               </button>
             )}
           </div>
-
           <div className="text-center mt-4 text-lg">
             Page {pageIndex + 1} of {pagesData.length}
           </div>
