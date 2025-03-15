@@ -1,11 +1,12 @@
 // src/components/Header.jsx
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import darkThemeIcon from '../img/dark-theme-svgrepo-com.svg'; // ייבוא האייקון למצב אור/חושך
+import darkThemeIcon from '../img/dark-theme-svgrepo-com.svg'; // Import dark/light mode icon
 import './Header.css';
 
 const Header = () => {
   const location = useLocation();
+  const isLandingPage = location.pathname === "/";
   const activePage = location.pathname;
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -23,7 +24,7 @@ const Header = () => {
     }
   };
 
-  // Define menu items:
+  // Define menu items only for non-landing pages
   const menuItems = [
     { pageNum: 1, text: 'Opening' },
     ...Array.from({ length: 10 }, (_, i) => ({
@@ -39,27 +40,37 @@ const Header = () => {
         <h2>Changing Status</h2>
       </div>
       <nav>
-        {/* Hamburger menu button (visible on mobile) */}
-        <button className="menu-toggle" onClick={toggleMenu}>
-          ☰
-        </button>
-        {/* Navigation menu */}
-        <ul className={isOpen ? 'open' : ''}>
-          {menuItems.map(({ pageNum, text }) => (
-            <li key={pageNum}>
-              <Link
-                to={`/page/${pageNum}`}
-                className={activePage === `/page/${pageNum}` ? 'active' : ''}
-                onClick={() => setIsOpen(false)}
-              >
-                {text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        {/* Dark/Light mode toggle button using SVG icon ללא רקע/גבול */}
+        {!isLandingPage && (
+          <>
+            <button className="menu-toggle" onClick={toggleMenu}>
+              ☰
+            </button>
+            <ul className={isOpen ? 'open' : ''}>
+              {menuItems.map(({ pageNum, text }) => (
+                <li key={pageNum}>
+                  <Link
+                    to={`/page/${pageNum}`}
+                    className={activePage === `/page/${pageNum}` ? 'active' : ''}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {text}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  to="/"
+                  className={activePage === "/" ? "active" : ""}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Home
+                </Link>
+              </li>
+            </ul>
+          </>
+        )}
         <button
-          className="dark-mode-toggle"
+          className={`dark-mode-toggle ${isLandingPage ? 'landing-toggle' : ''}`}
           onClick={toggleDarkMode}
           style={{ background: 'none', border: 'none', padding: 0 }}
         >
@@ -70,8 +81,7 @@ const Header = () => {
               width: '24px',
               height: '24px',
               filter: darkMode ? 'brightness(0) invert(1)' : 'none',
-              transform: 'translate(-100px, -22px)', // העברת האייקון קצת שמאלה
-			  
+              transform: 'translate(-80px, -22px)', // Shifted a bit to the right relative to previous -100px
             }}
           />
         </button>

@@ -48,6 +48,13 @@
   cursor: pointer;
 }
 
+/* Additional rule for dark/light toggle on the landing page */
+.landing-toggle {
+  margin-top: 28px; /* Adjust this value to push the toggle down */
+    margin-left: 25px; /* Adjust this value as needed */
+
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .menu-toggle {
