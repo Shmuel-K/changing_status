@@ -1,7 +1,7 @@
 // src/pages/pagesData.js
 
-// 1) Import all images
-import night from '../img/background/step/night.jpg'; // ← NEW import
+// 1) מייבאים את כל התמונות (נשאר כבעבר)
+import night from '../img/background/step/night.jpg';
 import sea1850228 from '../img/background/step/sea-1850228_1280.jpg';
 import stones8296649 from '../img/background/step/stones-8296649_1280.jpg';
 import storm5949243 from '../img/background/step/storm-5949243_1280.jpg';
@@ -14,7 +14,7 @@ import soapBubble from '../img/background/step/soap-bubble.jpg';
 import lighthouse from '../img/background/step/lighthouse.jpg';
 import lighthouse2 from '../img/background/step/lighthouse2.jpg';
 
-// 2) Define the array of pages; replace boatImage with night in the first object
+// 2) מגדירים את מערך העמודים
 const pagesData = [
   // (1) Opening page
   {
@@ -33,7 +33,7 @@ const pagesData = [
       "Leverage networking and connections to get your foot in the door"
     ],
     action: null,
-    background: night // ← Replaced
+    background: night
   },
   // (2) Step 1
   {
@@ -123,7 +123,10 @@ const pagesData = [
   {
     title: "8. Practicing Interview Simulations",
     paragraphs: [
-      "Prepare thoroughly for technical, behavioral, and HR interviews.<br />Do as many mock interviews as possible with colleagues, mentors, or friends in the field.<br />Practicing technical interviews reduces stress in real-time."
+      // כעת מציגים את שלושת המשפטים כשלוש פסקאות נפרדות
+      "Prepare thoroughly for technical, behavioral, and HR interviews.",
+      "Do as many mock interviews as possible with colleagues, mentors, or friends in the field.",
+      "Practicing technical interviews reduces stress in real-time."
     ],
     bullets: [],
     action: "Do mock interviews with a colleague or mentor, get feedback, and fix what didn’t work.",
