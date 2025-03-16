@@ -1,5 +1,20 @@
 // src/pages/pagesData.js
 
+// 1) Import all images
+import night from '../img/background/step/night.jpg'; // ← NEW import
+import sea1850228 from '../img/background/step/sea-1850228_1280.jpg';
+import stones8296649 from '../img/background/step/stones-8296649_1280.jpg';
+import storm5949243 from '../img/background/step/storm-5949243_1280.jpg';
+import sea1748161 from '../img/background/step/sea-1748161_1280.jpg';
+import pier5832800 from '../img/background/step/pier-5832800_1280.jpg';
+import sea3652697 from '../img/background/step/sea-3652697_1280.jpg';
+import sea5612119 from '../img/background/step/sea-5612119_1280.jpg';
+import shark2683184 from '../img/background/step/shark-2683184_1280.jpg';
+import soapBubble from '../img/background/step/soap-bubble.jpg';
+import lighthouse from '../img/background/step/lighthouse.jpg';
+import lighthouse2 from '../img/background/step/lighthouse2.jpg';
+
+// 2) Define the array of pages; replace boatImage with night in the first object
 const pagesData = [
   // (1) Opening page
   {
@@ -18,8 +33,7 @@ const pagesData = [
       "Leverage networking and connections to get your foot in the door"
     ],
     action: null,
-    backgroundDark: "linear-gradient(45deg, #1B1F24, #23272B)",
-    backgroundLight: "linear-gradient(45deg, #ffffff, #f0f0f0)"
+    background: night // ← Replaced
   },
   // (2) Step 1
   {
@@ -31,8 +45,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Write down your target role and a deadline for obtaining your first job.",
-    backgroundDark: "linear-gradient(45deg, #23272B, #2B3035)",
-    backgroundLight: "linear-gradient(45deg, #f7f7f7, #eeeeee)"
+    background: sea1850228
   },
   // (3) Step 2
   {
@@ -44,8 +57,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Do a self-assessment, talk to people who have already found a job, and figure out where you stand and what you still need to learn.",
-    backgroundDark: "linear-gradient(45deg, #2B3035, #33393E)",
-    backgroundLight: "linear-gradient(45deg, #eeeeee, #dcdcdc)"
+    background: stones8296649
   },
   // (4) Step 3
   {
@@ -57,8 +69,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Create a weekly plan for self-study and implementation, and treat it like a real job.",
-    backgroundDark: "linear-gradient(45deg, #33393E, #3B4247)",
-    backgroundLight: "linear-gradient(45deg, #dcdcdc, #c0c0c0)"
+    background: storm5949243
   },
   // (5) Step 4
   {
@@ -70,8 +81,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Identify a real problem in your environment and build a solution. Break the project into smaller development stages.",
-    backgroundDark: "linear-gradient(45deg, #3B4247, #434A50)",
-    backgroundLight: "linear-gradient(45deg, #c0c0c0, #a8a8a8)"
+    background: sea1748161
   },
   // (6) Step 5
   {
@@ -83,8 +93,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Start documenting your work process and upload weekly updates.",
-    backgroundDark: "linear-gradient(45deg, #434A50, #4B5259)",
-    backgroundLight: "linear-gradient(45deg, #a8a8a8, #909090)"
+    background: pier5832800
   },
   // (7) Step 6
   {
@@ -96,8 +105,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Update your profile with all your projects and new skills.",
-    backgroundDark: "linear-gradient(45deg, #4B5259, #535A62)",
-    backgroundLight: "linear-gradient(45deg, #909090, #787878)"
+    background: sea3652697
   },
   // (8) Step 7
   {
@@ -109,21 +117,17 @@ const pagesData = [
     ],
     bullets: [],
     action: "Create a custom resume for each role you apply for, emphasizing what’s relevant to that company.",
-    backgroundDark: "linear-gradient(45deg, #535A62, #5B626B)",
-    backgroundLight: "linear-gradient(45deg, #787878, #606060)"
+    background: sea5612119
   },
   // (9) Step 8
   {
     title: "8. Practicing Interview Simulations",
     paragraphs: [
-      "Prepare thoroughly for technical, behavioral, and HR interviews.",
-      "Do as many mock interviews as possible with colleagues, mentors, or friends in the field.",
-      "Practicing technical interviews reduces stress in real-time."
+      "Prepare thoroughly for technical, behavioral, and HR interviews.<br />Do as many mock interviews as possible with colleagues, mentors, or friends in the field.<br />Practicing technical interviews reduces stress in real-time."
     ],
     bullets: [],
     action: "Do mock interviews with a colleague or mentor, get feedback, and fix what didn’t work.",
-    backgroundDark: "linear-gradient(45deg, #5B626B, #636A74)",
-    backgroundLight: "linear-gradient(45deg, #606060, #484848)"
+    background: shark2683184
   },
   // (10) Step 9
   {
@@ -135,8 +139,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "After each interview, send an email and request detailed feedback.",
-    backgroundDark: "linear-gradient(45deg, #636A74, #6B727D)",
-    backgroundLight: "linear-gradient(45deg, #484848, #303030)"
+    background: soapBubble
   },
   // (11) Step 10
   {
@@ -148,8 +151,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Commit to continuing the process and not giving up when faced with rejections.",
-    backgroundDark: "linear-gradient(45deg, #6B727D, #737A86)",
-    backgroundLight: "linear-gradient(45deg, #303030, #181818)"
+    background: lighthouse
   },
   // (12) Summary page
   {
@@ -161,9 +163,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "What is the first step you will take today to change your status?",
-    // נניח שגם כאן נוסיף רקע בהיר
-    backgroundDark: "linear-gradient(45deg, #737A86, #737A86)",
-    backgroundLight: "linear-gradient(45deg, #e0e0e0, #e0e0e0)"
+    background: lighthouse2
   }
 ];
 
