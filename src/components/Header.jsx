@@ -37,7 +37,7 @@ const Header = () => {
   return (
     <header className="site-header">
       <div className="logo">
-        <h2>Changing Status</h2>
+        <h2>Changing Your Status</h2>
       </div>
       <nav>
         {!isLandingPage && (

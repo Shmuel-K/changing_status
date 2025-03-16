@@ -3,7 +3,7 @@
 const pagesData = [
   // (1) Opening page
   {
-    title: "Changing Status! A Practical Guide to Your First Tech Job",
+    title: "Changing Your Status! A Practical Guide to Your First Tech Job",
     paragraphs: [
       "How to find a tech job even without practical experience?",
       "You can break out of the cycle with the right tools and the right plan. Instead of waiting for an opportunity – we’ll create it ourselves.",
