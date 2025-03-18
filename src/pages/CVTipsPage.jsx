@@ -1,46 +1,43 @@
-// src/pages/Page.jsx
+// src/pages/CVTipsPage.jsx
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import pagesData from './pagesData';
+import cvTipsData from './cvTipsData';
 import arrowIcon from '../img/next-svgrepo-com.svg';
-import lightBulbIcon from '../img/light-bulb-svgrepo-com.svg';
+import lightBulbIcon from '../img/next-svgrepo-com.svg';
 
-const Page = () => {
+const CVTipsPage = () => {
   const { id } = useParams();
+  // If no id parameter is provided, default to the first tip
   const navigate = useNavigate();
-  const pageIndex = parseInt(id, 10) - 1;
+  const pageIndex = id ? parseInt(id, 10) - 1 : 0;
   const navigatingRef = useRef(false);
   const [showAction, setShowAction] = useState(false);
 
-  const valid = pageIndex >= 0 && pageIndex < pagesData.length;
+  const valid = pageIndex >= 0 && pageIndex < cvTipsData.length;
 
   const goNext = useCallback(() => {
-    if (pageIndex < pagesData.length - 1) {
-      navigate(`/page/${pageIndex + 2}`);
+    if (pageIndex < cvTipsData.length - 1) {
+      navigate(`/cv-tips/${pageIndex + 2}`);
     }
   }, [pageIndex, navigate]);
 
   const goPrev = useCallback(() => {
     if (pageIndex > 0) {
-      navigate(`/page/${pageIndex}`);
+      navigate(`/cv-tips/${pageIndex}`);
     }
   }, [pageIndex, navigate]);
 
   useEffect(() => {
     if (!valid) return;
     const handleWheel = (e) => {
-      if (e.deltaY > 50 && !navigatingRef.current && pageIndex < pagesData.length - 1) {
+      if (e.deltaY > 50 && !navigatingRef.current && pageIndex < cvTipsData.length - 1) {
         navigatingRef.current = true;
         goNext();
-        setTimeout(() => {
-          navigatingRef.current = false;
-        }, 1000);
+        setTimeout(() => { navigatingRef.current = false; }, 1000);
       } else if (e.deltaY < -50 && !navigatingRef.current && pageIndex > 0) {
         navigatingRef.current = true;
         goPrev();
-        setTimeout(() => {
-          navigatingRef.current = false;
-        }, 1000);
+        setTimeout(() => { navigatingRef.current = false; }, 1000);
       }
     };
     window.addEventListener('wheel', handleWheel);
@@ -55,7 +52,7 @@ const Page = () => {
     return <div>Page Not Found</div>;
   }
 
-  const { title, paragraphs, bullets, action, background } = pagesData[pageIndex];
+  const { title, paragraphs, bullets, action, background } = cvTipsData[pageIndex];
 
   return (
     <div
@@ -126,7 +123,7 @@ const Page = () => {
                 </span>
               </button>
             )}
-            {pageIndex < pagesData.length - 1 && (
+            {pageIndex < cvTipsData.length - 1 && (
               <button
                 onClick={goNext}
                 style={{ background: 'none', border: 'none', padding: 0 }}
@@ -145,7 +142,7 @@ const Page = () => {
           </div>
           <div className="text-center mt-4 text-lg">
             <span className="text-bg">
-              Page {pageIndex + 1} of {pagesData.length}
+              Page {pageIndex + 1} of {cvTipsData.length}
             </span>
           </div>
         </div>
@@ -154,4 +151,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default CVTipsPage;

@@ -7,6 +7,7 @@ import './Header.css';
 const Header = () => {
   const location = useLocation();
   const isLandingPage = location.pathname === "/";
+  const isCVTipsPage = location.pathname.startsWith("/cv-tips");
   const activePage = location.pathname;
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -24,7 +25,7 @@ const Header = () => {
     }
   };
 
-  // Define menu items only for non-landing pages
+  // Define menu items only for non-landing and non-CV Tips pages
   const menuItems = [
     { pageNum: 1, text: 'Opening' },
     ...Array.from({ length: 10 }, (_, i) => ({
@@ -46,26 +47,40 @@ const Header = () => {
               ☰
             </button>
             <ul className={isOpen ? 'open' : ''}>
-              {menuItems.map(({ pageNum, text }) => (
-                <li key={pageNum}>
+              {isCVTipsPage ? (
+                <li>
                   <Link
-                    to={`/page/${pageNum}`}
-                    className={activePage === `/page/${pageNum}` ? 'active' : ''}
+                    to="/"
+                    className={activePage === "/" ? "active" : ""}
                     onClick={() => setIsOpen(false)}
                   >
-                    {text}
+                    Home
                   </Link>
                 </li>
-              ))}
-              <li>
-                <Link
-                  to="/"
-                  className={activePage === "/" ? "active" : ""}
-                  onClick={() => setIsOpen(false)}
-                >
-                  Home
-                </Link>
-              </li>
+              ) : (
+                <>
+                  {menuItems.map(({ pageNum, text }) => (
+                    <li key={pageNum}>
+                      <Link
+                        to={`/page/${pageNum}`}
+                        className={activePage === `/page/${pageNum}` ? 'active' : ''}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {text}
+                      </Link>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      to="/"
+                      className={activePage === "/" ? "active" : ""}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Home
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </>
         )}
@@ -81,7 +96,7 @@ const Header = () => {
               width: '24px',
               height: '24px',
               filter: darkMode ? 'brightness(0) invert(1)' : 'none',
-              transform: 'translate(-80px, -22px)', // Shifted a bit to the right relative to previous -100px
+              transform: 'translate(-80px, -22px)',
             }}
           />
         </button>
