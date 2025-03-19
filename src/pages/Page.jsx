@@ -108,7 +108,7 @@ const Page = () => {
             )}
           </div>
         )}
-        <div style={{ paddingLeft: '2em' }}>
+        <div style={{ padding: '0 2em' }}>
           <div className="mt-8 flex justify-between w-full">
             {pageIndex > 0 && (
               <button

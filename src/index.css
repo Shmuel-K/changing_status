@@ -31,7 +31,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* אפקט רקע מונפש */
+/* אפקט רקע מונפש (אם רלוונטי) */
 .animated-gradient {
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
@@ -49,7 +49,7 @@ code {
   }
 }
 
-/* הגדרות למצב Dark – כאשר מוסיפים את המחלקה .dark */
+/* מצב Dark – כאשר מוסיפים את המחלקה .dark */
 .dark {
   --bg-color: #121212;
   --text-color: #e0e0e0;
@@ -58,22 +58,22 @@ code {
   --link-hover-color: var(--gold);
 }
 
-/* כלל עבור אייקוני החצים במצב Dark */
+/* אייקוני חצים במצב Dark */
 .dark .arrow-icon {
   filter: brightness(0) invert(1);
 }
 
-/* הזחה עבור פסקאות וכותרות */
+/* במקום padding-left, נעשה padding אופקי סימטרי */
 p {
-  padding-left: 2em;
+  padding: 0 1em; /* רווח 1em מכל צד */
   text-indent: 0;
 }
 h1, h2, h3, h4, h5, h6 {
-  padding-left: 1em;
+  padding: 0 1em; /* רווח 1em מכל צד */
   text-indent: 0;
 }
 
-/* כפתור "Alon's Ten Steps" */
+/* כפתור "Alon's Ten Steps" – נשאר כמו שהיה */
 .alon-button {
   background: linear-gradient(45deg, #1e3a8a, #3b82f6);
   color: #ffffff;
@@ -109,13 +109,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* === כיסוי רקע שקוף + טקסט לבן במצב חשוך === */
-
-/* רקע חצי-שקוף לטקסט במצב רגיל */
 .text-bg {
-  display: inline-block;       /* מאפשר רק סביב הטקסט */
-  background-color: rgba(255, 255, 255, 0.8); /* רקע בהיר חצי-שקוף בלייט מוד */
+  display: inline-block; /* רקע סביב הטקסט */
+  background-color: rgba(255, 255, 255, 0.8);
   color: var(--text-color);
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.75rem; /* רווח פנימי בתוך הבועה */
+  margin: 0 1rem;         /* רווח אופקי שווה משני הצדדים */
   border-radius: 0.5rem;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -124,5 +123,5 @@ h1, h2, h3, h4, h5, h6 {
 .dark .text-bg {
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* צל לטקסט לשיפור קריאות */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
