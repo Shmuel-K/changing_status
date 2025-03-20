@@ -72,7 +72,7 @@ const LandingPage = () => {
           left: '20px',
         }}
       >
-        <img
+       /* <img
           src={warningIcon}
           alt="Under Construction"
           style={{
@@ -86,7 +86,7 @@ const LandingPage = () => {
           Website Under Construction
           <br />
           I'd appreciate your feedback on our LinkedIn page.
-        </p>
+        </p>*/
       </div>
     </div>
   );
