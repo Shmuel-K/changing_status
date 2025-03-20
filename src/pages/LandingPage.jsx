@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import sharkImage from '../img/background/shark.jpg';
+import warningIcon from '../img/warning.svg'; // ייבוא האייקון
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const LandingPage = () => {
     navigate('/cv-tips');
   };
 
-   const handleInterviewTips = () => {
+  const handleInterviewTips = () => {
     navigate('/interview-tips');
   };
 
@@ -46,7 +47,6 @@ const LandingPage = () => {
         <h1 className="text-white text-4xl font-bold mb-8 text-center px-4">
           Welcome to Your Next Step in High-Tech
         </h1>
-        {/* Increased margin-bottom for extra spacing */}
         <button
           onClick={handleAlonClick}
           className="alon-button mb-8"
@@ -61,15 +61,32 @@ const LandingPage = () => {
         >
           Meyrav's CV Tips
         </button>
-        {/*
-        <button
-          onClick={handleInterviewTips}
-          className="alon-button"
-          aria-label="Interview Tips"
-        >
-          Interview Tips
-        </button>
-        */}
+      </div>
+
+      {/* Bottom left notice with background (using .text-bg) */}
+      <div
+        className="text-bg flex items-center"
+        style={{
+          position: 'absolute',
+          bottom: '20px',
+          left: '20px',
+        }}
+      >
+        <img
+          src={warningIcon}
+          alt="Under Construction"
+          style={{
+            width: '40px',
+            height: '40px',
+            marginRight: '20px',
+            transform: 'translateX(10px)', // מזיז את האייקון קצת ימינה
+          }}
+        />
+        <p className="text-base">
+          Website Under Construction
+          <br />
+          I'd appreciate your feedback on our LinkedIn page.
+        </p>
       </div>
     </div>
   );

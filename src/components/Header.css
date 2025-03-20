@@ -51,8 +51,7 @@
 /* Additional rule for dark/light toggle on the landing page */
 .landing-toggle {
   margin-top: 28px; /* Adjust this value to push the toggle down */
-    margin-left: 25px; /* Adjust this value as needed */
-
+  margin-left: 25px; /* Adjust this value as needed */
 }
 
 /* Mobile styles */
@@ -77,5 +76,10 @@
   
   .site-header nav ul.open {
     display: flex;
+  }
+  
+  /* Adjust the dark/light toggle icon for mobile */
+  .dark-mode-toggle img {
+    transform: translate(-30px, -30px);
   }
 }

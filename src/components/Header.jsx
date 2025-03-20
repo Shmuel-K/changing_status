@@ -95,8 +95,8 @@ const Header = () => {
             style={{
               width: '24px',
               height: '24px',
-              filter: darkMode ? 'brightness(0) invert(1)' : 'none',
-              transform: 'translate(-80px, -22px)',
+              filter: darkMode ? 'brightness(0) invert(1)' : 'none'
+              // ה-transform הוסר מה-inline style
             }}
           />
         </button>
