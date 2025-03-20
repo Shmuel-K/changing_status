@@ -85,7 +85,7 @@ const LandingPage = () => {
         <p className="text-base">
           Website Under Construction
           <br />
-          I'd appreciate your feedback on our LinkedIn page.
+          I'd appreciate your feedback on my LinkedIn page.
         </p>
       </div>
     </div>
