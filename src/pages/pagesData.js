@@ -1,17 +1,4 @@
 // src/pages/pagesData.js
-import night from '../img/background/step/night.jpg';
-import sea from '../img/background/step/sea.jpg';
-import stones from '../img/background/step/stones.jpg';
-import storm from '../img/background/step/storm.jpg';
-import sea01 from '../img/background/step/sea01.jpg';
-import pier from '../img/background/step/pier.jpg';
-import sea02 from '../img/background/step/sea02.jpg';
-import sea03 from '../img/background/step/sea03.jpg';
-import shark from '../img/background/step/shark.jpg';
-import soapBubble from '../img/background/step/soap-bubble.jpg';
-import woodenBench from '../img/background/step/wooden-bench.jpg';
-import lighthouse2 from '../img/background/step/lighthouse2.jpg';
-
 const pagesData = [
   {
     title: "Changing Your Status! A Practical Guide to Your First Tech Job",
@@ -29,7 +16,7 @@ const pagesData = [
       "Leverage networking and connections to get your foot in the door"
     ],
     action: null,
-    background: night
+    background: 'linear-gradient(45deg, #32CD32, #FFFF00)'
   },
   {
     title: "1. Market Research, Defining a Position & Deadline",
@@ -40,7 +27,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Write down your target role and a deadline for obtaining your first job.",
-    background: sea
+    background: 'linear-gradient(50deg, #32CD32, #FFFF00)'
   },
   {
     title: "2. Setting Realistic Expectations",
@@ -51,7 +38,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Do a self-assessment, talk to people who have already found a job, and figure out where you stand and what you still need to learn.",
-    background: stones
+    background: 'linear-gradient(55deg, #32CD32, #FFFF00)'
   },
   {
     title: "3. Managing Your Daily Schedule",
@@ -62,7 +49,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Create a weekly plan for self-study and implementation, and treat it like a real job.",
-    background: storm
+    background: 'linear-gradient(60deg, #32CD32, #FFFF00)'
   },
   {
     title: "4. The Breakthrough Project",
@@ -73,7 +60,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Identify a real problem in your environment and build a solution. Break the project into smaller development stages.",
-    background: sea01
+    background: 'linear-gradient(65deg, #32CD32, #FFFF00)'
   },
   {
     title: "5. Documenting the Project",
@@ -84,7 +71,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Start documenting your work process and upload weekly updates.",
-    background: pier
+    background: 'linear-gradient(70deg, #32CD32, #FFFF00)'
   },
   {
     title: "6. Building a Digital Presence",
@@ -95,7 +82,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Update your profile with all your projects and new skills.",
-    background: sea02
+    background: 'linear-gradient(75deg, #32CD32, #FFFF00)'
   },
   {
     title: "7. Polishing Your Resume",
@@ -106,7 +93,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Create a custom resume for each role you apply for, emphasizing what’s relevant to that company.",
-    background: sea03
+    background: 'linear-gradient(80deg, #32CD32, #FFFF00)'
   },
   {
     title: "8. Practicing Interview Simulations",
@@ -117,7 +104,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Do mock interviews with a colleague or mentor, get feedback, and fix what didn’t work.",
-    background: shark
+    background: 'linear-gradient(85deg, #32CD32, #FFFF00)'
   },
   {
     title: "9. Getting Feedback and Continuous Learning",
@@ -128,7 +115,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "After each interview, send an email and request detailed feedback.",
-    background: soapBubble
+    background: 'linear-gradient(90deg, #32CD32, #FFFF00)'
   },
   {
     title: "10. Handling Rejections and Persistence",
@@ -139,7 +126,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "Commit to continuing the process and not giving up when faced with rejections.",
-    background: woodenBench
+    background: 'linear-gradient(95deg, #32CD32, #FFFF00)'
   },
   {
     title: "In Conclusion – Success Is a Result of Action, Not Luck",
@@ -150,7 +137,7 @@ const pagesData = [
     ],
     bullets: [],
     action: "What is the first step you will take today to change your status?",
-    background: lighthouse2
+    background: 'linear-gradient(100deg, #32CD32, #FFFF00)'
   }
 ];
 

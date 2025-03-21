@@ -3,11 +3,12 @@ import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import cvTipsData from './cvTipsData';
 import arrowIcon from '../img/next-svgrepo-com.svg';
-import lightBulbIcon from '../img/next-svgrepo-com.svg';
+// ודא שקובץ ה-SVG של הנורה אכן נקרא light-bulb-svgrepo-com.svg ונמצא בנתיב ../img
+import lightBulbIcon from '../img/light-bulb-svgrepo-com.svg';
 
 const CVTipsPage = () => {
   const { id } = useParams();
-  // If no id parameter is provided, default to the first tip
+  // ברירת מחדל - אם לא מגיע id, נתחיל בעמוד הראשון
   const navigate = useNavigate();
   const pageIndex = id ? parseInt(id, 10) - 1 : 0;
   const navigatingRef = useRef(false);
@@ -27,6 +28,7 @@ const CVTipsPage = () => {
     }
   }, [pageIndex, navigate]);
 
+  // גלילת עכבר: מעבר בין עמודים
   useEffect(() => {
     if (!valid) return;
     const handleWheel = (e) => {
@@ -44,6 +46,7 @@ const CVTipsPage = () => {
     return () => window.removeEventListener('wheel', handleWheel);
   }, [pageIndex, goNext, goPrev, valid]);
 
+  // סגירת הבלון (showAction) במעבר עמוד
   useEffect(() => {
     setShowAction(false);
   }, [pageIndex]);
@@ -56,27 +59,33 @@ const CVTipsPage = () => {
 
   return (
     <div
-      className="relative w-full bg-cover bg-center"
+      className="relative w-full bg-cover bg-center animated-gradient"
       style={{
-        height: 'calc(100vh - 60px)',
-        backgroundImage: `url(${background})`,
+        minHeight: 'calc(100vh - 60px)',
+        backgroundImage: background,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}
       role="main"
     >
+      {/* שכבה שקופה מעל הרקע */}
       <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       
+      {/* תוכן הדף */}
       <div className="container flex flex-col justify-center h-full text-left p-8">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           <span className="text-bg">{title}</span>
         </h1>
+
+        {/* פסקאות */}
         {paragraphs.map((para, i) => (
           <p key={i} className="mb-4 leading-relaxed text-lg">
             <span className="text-bg" dangerouslySetInnerHTML={{ __html: para }} />
           </p>
         ))}
+
+        {/* רשימת נקודות (אם יש) */}
         {bullets.length > 0 && (
           <ul className="list-disc list-inside mb-4">
             {bullets.map((bullet, i) => (
@@ -86,6 +95,8 @@ const CVTipsPage = () => {
             ))}
           </ul>
         )}
+
+        {/* כפתור נורה (action) אם קיים */}
         {action && (
           <div className="mt-6 ml-8">
             <button
@@ -105,6 +116,8 @@ const CVTipsPage = () => {
             )}
           </div>
         )}
+
+        {/* ניווט קדימה/אחורה */}
         <div style={{ padding: '0 2em' }}>
           <div className="mt-8 flex justify-between w-full">
             {pageIndex > 0 && (
@@ -140,6 +153,8 @@ const CVTipsPage = () => {
               </button>
             )}
           </div>
+
+          {/* מספר עמוד */}
           <div className="text-center mt-4 text-lg">
             <span className="text-bg">
               Page {pageIndex + 1} of {cvTipsData.length}

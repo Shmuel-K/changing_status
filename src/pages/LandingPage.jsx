@@ -1,8 +1,7 @@
 // src/pages/LandingPage.jsx
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import sharkImage from '../img/background/shark.jpg';
-import warningIcon from '../img/warning.svg'; // ייבוא האייקון
+import warningIcon from '../img/warning.svg';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -23,17 +22,13 @@ const LandingPage = () => {
     navigate('/cv-tips');
   };
 
-  const handleInterviewTips = () => {
-    navigate('/interview-tips');
-  };
-
   return (
     <div
-      className="relative"
+      className="relative animated-gradient"
       style={{
         marginTop: '80px',
         minHeight: 'calc(100vh - 80px)',
-        backgroundImage: `url(${sharkImage})`,
+        backgroundImage: 'linear-gradient(135deg, #32CD32, #FFFF00)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -63,7 +58,7 @@ const LandingPage = () => {
         </button>
       </div>
 
-      {/* Bottom left notice with background (using .text-bg) */}
+      {/* Bottom left notice */}
       <div
         className="text-bg flex items-center"
         style={{
@@ -79,7 +74,7 @@ const LandingPage = () => {
             width: '40px',
             height: '40px',
             marginRight: '20px',
-            transform: 'translateX(10px)', // מזיז את האייקון קצת ימינה
+            transform: 'translateX(10px)',
           }}
         />
         <p className="text-base">
