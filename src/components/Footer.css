@@ -1,4 +1,6 @@
 /* src/components/Footer.css */
+
+/* המעטפת הכללית של הפוטר */
 .site-footer {
   position: fixed;
   bottom: 20px;
@@ -6,13 +8,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent; /* הרקע הוסר */
+  background-color: transparent;
   padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
+/* אלמנט העוגן (a) שעוטף את האייקון */
+.site-footer a {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.8); /* רקע לבן-שקוף */
+  padding: 8px;
+  border-radius: 10px; /* פינות מעוגלות */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* צל קטן מסביב */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* אפקט רחיפה */
+.site-footer a:hover {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* הגודל של האייקון עצמו */
 .site-footer img {
   width: 30px;
   height: 30px;

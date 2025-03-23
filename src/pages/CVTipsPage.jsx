@@ -1,14 +1,13 @@
-// src/pages/CVTipsPage.jsx
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import cvTipsData from './cvTipsData';
 import arrowIcon from '../img/next-svgrepo-com.svg';
-// ודא שקובץ ה-SVG של הנורה אכן נקרא light-bulb-svgrepo-com.svg ונמצא בנתיב ../img
-import lightBulbIcon from '../img/light-bulb-svgrepo-com.svg';
+import lightBulbIcon from '../img/next-svgrepo-com.svg';
+import { motion } from 'framer-motion';
 
 const CVTipsPage = () => {
   const { id } = useParams();
-  // ברירת מחדל - אם לא מגיע id, נתחיל בעמוד הראשון
+  // אם אין פרמטר id – מציגים את הטיפ הראשון
   const navigate = useNavigate();
   const pageIndex = id ? parseInt(id, 10) - 1 : 0;
   const navigatingRef = useRef(false);
@@ -28,25 +27,32 @@ const CVTipsPage = () => {
     }
   }, [pageIndex, navigate]);
 
-  // גלילת עכבר: מעבר בין עמודים
+  // אופטימיזציה של אירועי גלילה באמצעות requestAnimationFrame
   useEffect(() => {
     if (!valid) return;
+    let ticking = false;
     const handleWheel = (e) => {
-      if (e.deltaY > 50 && !navigatingRef.current && pageIndex < cvTipsData.length - 1) {
-        navigatingRef.current = true;
-        goNext();
-        setTimeout(() => { navigatingRef.current = false; }, 1000);
-      } else if (e.deltaY < -50 && !navigatingRef.current && pageIndex > 0) {
-        navigatingRef.current = true;
-        goPrev();
-        setTimeout(() => { navigatingRef.current = false; }, 1000);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (e.deltaY > 50 && !navigatingRef.current && pageIndex < cvTipsData.length - 1) {
+            navigatingRef.current = true;
+            goNext();
+            setTimeout(() => { navigatingRef.current = false; }, 1000);
+          } else if (e.deltaY < -50 && !navigatingRef.current && pageIndex > 0) {
+            navigatingRef.current = true;
+            goPrev();
+            setTimeout(() => { navigatingRef.current = false; }, 1000);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
     window.addEventListener('wheel', handleWheel);
     return () => window.removeEventListener('wheel', handleWheel);
   }, [pageIndex, goNext, goPrev, valid]);
 
-  // סגירת הבלון (showAction) במעבר עמוד
+  // סגירת בלון הפעולה במעבר עמוד
   useEffect(() => {
     setShowAction(false);
   }, [pageIndex]);
@@ -58,34 +64,38 @@ const CVTipsPage = () => {
   const { title, paragraphs, bullets, action, background } = cvTipsData[pageIndex];
 
   return (
-    <div
-      className="relative w-full bg-cover bg-center animated-gradient"
-      style={{
-        minHeight: 'calc(100vh - 60px)',
-        backgroundImage: background,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+    <motion.div
+      className="relative w-full bg-cover bg-center"
       role="main"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        height: 'calc(100vh - 60px)',
+        // שימוש ישיר במחרוזת הגראדיאנט כרקע
+        background: background,
+      }}
     >
-      {/* שכבה שקופה מעל הרקע */}
-      <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+      {/* שכבת אוברליי */}
+      <div
+        className="absolute inset-0 bg-black bg-opacity-30"
+        style={{ zIndex: 1 }}
+      ></div>
       
-      {/* תוכן הדף */}
-      <div className="container flex flex-col justify-center h-full text-left p-8">
+      {/* קונטיינר התוכן עם מיקום יחסית ו־z-index גבוה */}
+      <div
+        className="container flex flex-col justify-center h-full text-left p-8"
+        style={{ position: 'relative', zIndex: 10, color: '#000' }}
+      >
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           <span className="text-bg">{title}</span>
         </h1>
-
-        {/* פסקאות */}
         {paragraphs.map((para, i) => (
           <p key={i} className="mb-4 leading-relaxed text-lg">
             <span className="text-bg" dangerouslySetInnerHTML={{ __html: para }} />
           </p>
         ))}
-
-        {/* רשימת נקודות (אם יש) */}
         {bullets.length > 0 && (
           <ul className="list-disc list-inside mb-4">
             {bullets.map((bullet, i) => (
@@ -95,8 +105,6 @@ const CVTipsPage = () => {
             ))}
           </ul>
         )}
-
-        {/* כפתור נורה (action) אם קיים */}
         {action && (
           <div className="mt-6 ml-8">
             <button
@@ -116,8 +124,6 @@ const CVTipsPage = () => {
             )}
           </div>
         )}
-
-        {/* ניווט קדימה/אחורה */}
         <div style={{ padding: '0 2em' }}>
           <div className="mt-8 flex justify-between w-full">
             {pageIndex > 0 && (
@@ -153,8 +159,6 @@ const CVTipsPage = () => {
               </button>
             )}
           </div>
-
-          {/* מספר עמוד */}
           <div className="text-center mt-4 text-lg">
             <span className="text-bg">
               Page {pageIndex + 1} of {cvTipsData.length}
@@ -162,7 +166,7 @@ const CVTipsPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

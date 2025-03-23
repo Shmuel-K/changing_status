@@ -1,4 +1,3 @@
-// src/pages/cvTipsData.js
 const cvTipsData = [
   {
     title: "Keep It to One Page",
@@ -7,7 +6,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(45deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(45deg, #32CD32, #FFFF00)"
   },
   {
     title: "File Naming",
@@ -16,7 +15,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(50deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(50deg, #32CD32, #FFFF00)"
   },
   {
     title: "Document Currency",
@@ -25,7 +24,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(55deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(55deg, #32CD32, #FFFF00)"
   },
   {
     title: "Title",
@@ -34,7 +33,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(60deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(60deg, #32CD32, #FFFF00)"
   },
   {
     title: "Contact Information",
@@ -43,7 +42,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(65deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(65deg, #32CD32, #FFFF00)"
   },
   {
     title: "Email Address",
@@ -52,7 +51,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(70deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(70deg, #32CD32, #FFFF00)"
   },
   {
     title: "LinkedIn Profile",
@@ -61,7 +60,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(75deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(75deg, #32CD32, #FFFF00)"
   },
   {
     title: "GitHub (Optional)",
@@ -70,7 +69,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(80deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(80deg, #32CD32, #FFFF00)"
   },
   {
     title: "Photo",
@@ -79,7 +78,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(85deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(85deg, #32CD32, #FFFF00)"
   },
   {
     title: "Summary / Bio",
@@ -88,7 +87,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(90deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(90deg, #32CD32, #FFFF00)"
   },
   {
     title: "Experience",
@@ -97,7 +96,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(95deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(95deg, #32CD32, #FFFF00)"
   },
   {
     title: "Education",
@@ -106,7 +105,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(100deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(100deg, #32CD32, #FFFF00)"
   },
   {
     title: "Projects",
@@ -115,7 +114,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(105deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(105deg, #32CD32, #FFFF00)"
   },
   {
     title: "Technical Skills",
@@ -124,7 +123,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(110deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(110deg, #32CD32, #FFFF00)"
   },
   {
     title: "Proofreading",
@@ -133,7 +132,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(115deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(115deg, #32CD32, #FFFF00)"
   },
   {
     title: "Design",
@@ -142,7 +141,7 @@ const cvTipsData = [
     ],
     bullets: [],
     action: null,
-    background: 'linear-gradient(120deg, #32CD32, #FFFF00)'
+    background: "linear-gradient(120deg, #32CD32, #FFFF00)"
   }
 ];
 

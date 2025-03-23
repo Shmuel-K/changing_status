@@ -1,6 +1,7 @@
 // src/pages/LandingPage.jsx
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import warningIcon from '../img/warning.svg';
 
 const LandingPage = () => {
@@ -23,11 +24,15 @@ const LandingPage = () => {
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
       className="relative animated-gradient"
       style={{
-        marginTop: '80px',
-        minHeight: 'calc(100vh - 80px)',
+        paddingTop: '60px',
+        minHeight: 'calc(100vh - 60px)',
         backgroundImage: 'linear-gradient(135deg, #32CD32, #FFFF00)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -83,7 +88,7 @@ const LandingPage = () => {
           I'd appreciate your feedback on my LinkedIn page.
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

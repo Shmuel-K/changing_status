@@ -48,10 +48,10 @@
   cursor: pointer;
 }
 
-/* Additional rule for dark/light toggle on the landing page */
+/* Adjusted rule for dark/light toggle on the landing page */
 .landing-toggle {
-  margin-top: 28px; /* Adjust this value to push the toggle down */
-  margin-left: 25px; /* Adjust this value as needed */
+  /* הורדנו את margin-top כדי למנוע דחיפה כלפי מטה */
+  margin-left: 25px; /* ניתן להתאים לפי הצורך */
 }
 
 /* Mobile styles */
