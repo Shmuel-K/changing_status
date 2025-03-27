@@ -1,7 +1,13 @@
 // src/components/Header.jsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import darkThemeIcon from '../img/dark-theme-svgrepo-com.svg'; // Import dark/light mode icon
+import darkThemeIcon from '../img/dark-theme-svgrepo-com.svg';
+
+// אייקונים של הדגלים
+import usFlagIcon from '../img/united-states-svgrepo-com.svg';
+import israelFlagIcon from '../img/israel-svgrepo-com.svg';
+
+import { LanguageContext } from '../context/LanguageContext';
 import './Header.css';
 
 const Header = () => {
@@ -12,10 +18,14 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
+  // שימוש בהקשר השפה
+  const { language, toggleLanguage } = useContext(LanguageContext);
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // החלפת מצב כהה/בהיר
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     if (!darkMode) {
@@ -25,7 +35,7 @@ const Header = () => {
     }
   };
 
-  // Define menu items only for non-landing and non-CV Tips pages
+  // הגדרת פריטי התפריט רק אם זה לא דף הנחיתה ולא דף ה-CV Tips
   const menuItems = [
     { pageNum: 1, text: 'Opening' },
     ...Array.from({ length: 10 }, (_, i) => ({
@@ -40,6 +50,7 @@ const Header = () => {
       <div className="logo">
         <h2>Changing Your Status</h2>
       </div>
+
       <nav>
         {!isLandingPage && (
           <>
@@ -84,10 +95,12 @@ const Header = () => {
             </ul>
           </>
         )}
+
+        {/* כפתור החלפת מצב כהה/בהיר */}
         <button
           className={`dark-mode-toggle ${isLandingPage ? 'landing-toggle' : ''}`}
           onClick={toggleDarkMode}
-          style={{ background: 'none', border: 'none', padding: 0 }}
+          style={{ background: 'none', border: 'none', padding: 0, marginLeft: '10px' }}
         >
           <img
             src={darkThemeIcon}
@@ -95,9 +108,29 @@ const Header = () => {
             style={{
               width: '24px',
               height: '24px',
+              // ניתן לשחק עם ה־filter אם רוצים להחליף צבעים במצב כהה
               filter: darkMode ? 'brightness(0) invert(1)' : 'none'
             }}
           />
+        </button>
+
+        {/* כפתור החלפת שפה (דגל ארה"ב / דגל ישראל) */}
+        <button
+          onClick={toggleLanguage}
+          style={{
+            background: 'none',
+            border: 'none',
+            padding: '4px 8px',
+            cursor: 'pointer',
+            marginLeft: '10px'
+          }}
+        >
+         <img
+		src={language === 'en' ? israelFlagIcon : usFlagIcon}
+  alt={language === 'en' ? 'Switch to Hebrew' : 'Switch to English'}
+  style={{ width: '24px', height: '24px' }}
+/>
+
         </button>
       </nav>
     </header>

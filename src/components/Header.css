@@ -50,8 +50,7 @@
 
 /* Adjusted rule for dark/light toggle on the landing page */
 .landing-toggle {
-  /* הורדנו את margin-top כדי למנוע דחיפה כלפי מטה */
-  margin-left: 25px; /* ניתן להתאים לפי הצורך */
+  margin-left: 25px;
 }
 
 /* Mobile styles */
@@ -78,7 +77,6 @@
     display: flex;
   }
   
-  /* Adjust the dark/light toggle icon for mobile */
   .dark-mode-toggle img {
     transform: translate(-30px, -30px);
   }

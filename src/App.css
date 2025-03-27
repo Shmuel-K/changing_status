@@ -1,17 +1,29 @@
 /* src/App.css */
 
-/* כללי - סידור מרכז התוכן */
+/* עיצוב כללי - מיכל מרכזי */
 .container {
-  max-width: 900px;   /* מגביל רוחב */
-  margin: 0 auto;     /* מרכז אופקית */
-  padding: 20px 200px !important; /* רווח סביב התוכן: 20px למעלה/למטה, 200px משמאל/ימין */
+  max-width: 900px;            /* מגביל את הרוחב */
+  margin-inline: auto;         /* מרכז אופקית בהתאם לכיוון */
+  padding-block: 20px;         /* רווח אנכי למעלה ולמטה */
+  padding-inline: 2rem;        /* רווח אופקי נמוך יותר (במקום 200px) */
+  text-align: center;          /* ממרכז את הטקסט והאלמנטים */
+}
+
+/* מחלקה לבועה ממורכזת עבור LandingPage */
+.landing-bubble {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;            /* רוחב מקסימלי לבועה */
+  width: 100%;
+  text-align: center;          /* ממרכז את הטקסט בתוך הבועה */
 }
 
 /* כותרות */
 h1, h2, h3 {
   font-size: 1.8rem;
-  text-align: center;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 /* תפריט ניווט רספונסיבי */
@@ -29,8 +41,14 @@ nav ul li {
   font-size: 1rem;
 }
 
-/* שינוי למובייל - תפריט נפתח */
+/* התאמות למסכים צרים */
 @media screen and (max-width: 768px) {
+  .container {
+    padding-inline: 1rem;    /* מפחיתים רווח אופקי במסכים צרים */
+  }
+  .landing-bubble {
+    max-width: 90%;
+  }
   nav ul {
     display: block;
     text-align: center;
@@ -42,7 +60,7 @@ nav ul li {
   }
 }
 
-/* התאמת הכפתור "Next" */
+/* כפתור "Next" (אם יש צורך) */
 .next-button {
   display: block;
   background-color: var(--link-color);

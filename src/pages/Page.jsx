@@ -1,4 +1,3 @@
-// src/pages/Page.jsx
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import pagesData from './pagesData';
@@ -84,21 +83,24 @@ const Page = () => {
       }}
       role="main"
     >
-      {/* Transparent overlay */}
+      {/* שקיפות מעל התמונה */}
       <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       
-      {/* Page content */}
-      <div className="container flex flex-col justify-center h-full text-left p-8">
+      {/* תוכן העמוד - שיניתי את text-left ל־text-center */}
+      <div className="container flex flex-col justify-center h-full text-center p-8">
+        {/* כותרת */}
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           <span className="text-bg">{title}</span>
         </h1>
 
+        {/* פסקאות */}
         {paragraphs.map((para, i) => (
           <p key={i} className="mb-4 leading-relaxed text-lg">
             <span className="text-bg" dangerouslySetInnerHTML={{ __html: para }} />
           </p>
         ))}
 
+        {/* בולטים */}
         {bullets.length > 0 && (
           <ul className="list-disc list-inside mb-4">
             {bullets.map((bullet, i) => (
@@ -109,29 +111,31 @@ const Page = () => {
           </ul>
         )}
 
-        {action && (
-          <div className="mt-6 ml-8">
-            <button
-              onClick={() => setShowAction(!showAction)}
-              style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
-            >
-              <img
-                src={lightBulbIcon}
-                alt="Action to Take"
-                style={{ width: '100px', height: '100px', transform: 'translateX(10px)' }}
-              />
-            </button>
-            {showAction && (
-              <p className="mt-4 text-lg font-semibold text-gray-100 bg-gray-800 bg-opacity-80 p-4 rounded-lg shadow-lg">
-                <span className="text-bg" dangerouslySetInnerHTML={{ __html: action }} />
-              </p>
-            )}
-          </div>
-        )}
+        {/* עוטפים את הנורה, כפתורי החיצים וטקסט העמוד באותו קונטיינר ממורכז */}
+        <div className="flex flex-col items-center justify-center mt-8 space-y-4">
+          {/* בלון פעולה (נורה) */}
+          {action && (
+            <div className="flex flex-col items-center">
+              <button
+                onClick={() => setShowAction(!showAction)}
+                style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              >
+                <img
+                  src={lightBulbIcon}
+                  alt="Action to Take"
+                  style={{ width: '80px', height: '80px' }}
+                />
+              </button>
+              {showAction && (
+                <p className="mt-4 text-lg font-semibold text-gray-100 bg-gray-800 bg-opacity-80 p-4 rounded-lg shadow-lg">
+                  <span className="text-bg" dangerouslySetInnerHTML={{ __html: action }} />
+                </p>
+              )}
+            </div>
+          )}
 
-        {/* Navigation buttons */}
-        <div style={{ padding: '0 2em' }}>
-          <div className="mt-8 flex justify-between w-full">
+          {/* כפתורי חיצים */}
+          <div className="flex items-center space-x-4">
             {pageIndex > 0 && (
               <button
                 onClick={goPrev}
@@ -142,7 +146,6 @@ const Page = () => {
                   <img
                     src={arrowIcon}
                     alt="Previous"
-                    className="arrow-icon"
                     style={{ width: '24px', height: '24px', transform: 'rotate(180deg)' }}
                   />
                 </span>
@@ -158,7 +161,6 @@ const Page = () => {
                   <img
                     src={arrowIcon}
                     alt="Next"
-                    className="arrow-icon"
                     style={{ width: '24px', height: '24px' }}
                   />
                 </span>
@@ -166,8 +168,8 @@ const Page = () => {
             )}
           </div>
 
-          {/* Page number */}
-          <div className="text-center mt-4 text-lg">
+          {/* מספר העמוד */}
+          <div className="text-lg">
             <span className="text-bg">
               Page {pageIndex + 1} of {pagesData.length}
             </span>

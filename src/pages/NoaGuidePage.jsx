@@ -1,45 +1,39 @@
-import React, { useEffect, useRef, useCallback, useState, useContext } from 'react';
+import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import noaGuideData from './noaGuideData';
 import arrowIcon from '../img/next-svgrepo-com.svg';
-import lightBulbIcon from '../img/next-svgrepo-com.svg';
-import { LanguageContext } from '../context/LanguageContext';
-import cvTipsDataEn from '../locales/en/cvTipsData';
-import cvTipsDataHe from '../locales/he/cvTipsData';
+import { motion } from 'framer-motion';
 
-const CVTipsPage = () => {
-  // שימוש בהקשר השפה
-  const { language } = useContext(LanguageContext);
-  const cvTipsData = language === 'en' ? cvTipsDataEn : cvTipsDataHe;
-
+const NoaGuidePage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  // If no id is provided, show the first page (index 0)
   const pageIndex = id ? parseInt(id, 10) - 1 : 0;
   const navigatingRef = useRef(false);
   const [showAction, setShowAction] = useState(false);
 
-  const valid = pageIndex >= 0 && pageIndex < cvTipsData.length;
+  const valid = pageIndex >= 0 && pageIndex < noaGuideData.length;
 
   const goNext = useCallback(() => {
-    if (pageIndex < cvTipsData.length - 1) {
-      navigate(`/cv-tips/${pageIndex + 2}`);
-    }
-  }, [pageIndex, navigate, cvTipsData.length]);
-
-  const goPrev = useCallback(() => {
-    if (pageIndex > 0) {
-      navigate(`/cv-tips/${pageIndex}`);
+    if (pageIndex < noaGuideData.length - 1) {
+      navigate(`/noa-guide/${pageIndex + 2}`);
     }
   }, [pageIndex, navigate]);
 
-  // אופטימיזציה של אירועי גלילה באמצעות requestAnimationFrame
+  const goPrev = useCallback(() => {
+    if (pageIndex > 0) {
+      navigate(`/noa-guide/${pageIndex}`);
+    }
+  }, [pageIndex, navigate]);
+
+  // Optimize scroll events using requestAnimationFrame
   useEffect(() => {
     if (!valid) return;
     let ticking = false;
     const handleWheel = (e) => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          if (e.deltaY > 50 && !navigatingRef.current && pageIndex < cvTipsData.length - 1) {
+          if (e.deltaY > 50 && !navigatingRef.current && pageIndex < noaGuideData.length - 1) {
             navigatingRef.current = true;
             goNext();
             setTimeout(() => { navigatingRef.current = false; }, 1000);
@@ -53,45 +47,44 @@ const CVTipsPage = () => {
         ticking = true;
       }
     };
+
     window.addEventListener('wheel', handleWheel);
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [pageIndex, goNext, goPrev, valid, cvTipsData.length]);
+  }, [pageIndex, goNext, goPrev, valid]);
 
-  // סגירת בלון הפעולה במעבר עמוד
+  // Reset action on page change (if needed)
   useEffect(() => {
     setShowAction(false);
   }, [pageIndex]);
 
   if (!valid) {
-    return <div>דף לא נמצא</div>;
+    return <div>Page Not Found</div>;
   }
 
-  const { title, paragraphs, bullets, action, background } = cvTipsData[pageIndex];
+  const { title, paragraphs, bullets, action, background } = noaGuideData[pageIndex];
 
   return (
     <motion.div
-      className="relative w-full bg-cover bg-center"
+      className="relative w-full bg-cover bg-center animated-gradient"
       role="main"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
       style={{
-        height: 'calc(100vh - 60px)',
+        paddingTop: '60px',
+        minHeight: 'calc(100vh - 60px)',
         background: background,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* שכבת אוברליי */}
-      <div
-        className="absolute inset-0 bg-black bg-opacity-30"
-        style={{ zIndex: 1 }}
-      ></div>
+      {/* Transparent overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       
-      {/* קונטיינר התוכן */}
-      <div
-        className="container flex flex-col justify-center h-full text-left p-8"
-        style={{ position: 'relative', zIndex: 10, color: '#000' }}
-      >
+      {/* Content container */}
+      <div className="container flex flex-col justify-center h-full text-left p-8" style={{ position: 'relative', zIndex: 10, color: '#000' }}>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           <span className="text-bg">{title}</span>
         </h1>
@@ -109,56 +102,30 @@ const CVTipsPage = () => {
             ))}
           </ul>
         )}
-        {action && (
-          <div className="mt-6 ml-8">
-            <button
-              onClick={() => setShowAction(!showAction)}
-              style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
-            >
-              <img
-                src={lightBulbIcon}
-                alt="פעולה"
-                style={{ width: '100px', height: '100px', transform: 'translateX(10px)' }}
-              />
-            </button>
-            {showAction && (
-              <p className="mt-4 text-lg font-semibold text-gray-100 bg-gray-800 bg-opacity-80 p-4 rounded-lg shadow-lg">
-                <span className="text-bg" dangerouslySetInnerHTML={{ __html: action }} />
-              </p>
-            )}
-          </div>
-        )}
+        {/* אין כפתור "Continue" – רק ניווט */}
 
         {/* אזור הניווט והעמוד */}
         <div className="text-center mt-8">
           {/* כפתורי קודם / הבא */}
           <div className="space-x-4">
             {pageIndex > 0 && (
-              <button
-                onClick={goPrev}
-                style={{ background: 'none', border: 'none', padding: 0 }}
-                aria-label="דף קודם"
-              >
+              <button onClick={goPrev} style={{ background: 'none', border: 'none', padding: 0 }} aria-label="Previous Page">
                 <span className="text-bg">
                   <img
                     src={arrowIcon}
-                    alt="דף קודם"
+                    alt="Previous"
                     className="inline-block"
                     style={{ width: '24px', height: '24px', transform: 'rotate(180deg)' }}
                   />
                 </span>
               </button>
             )}
-            {pageIndex < cvTipsData.length - 1 && (
-              <button
-                onClick={goNext}
-                style={{ background: 'none', border: 'none', padding: 0 }}
-                aria-label="דף הבא"
-              >
+            {pageIndex < noaGuideData.length - 1 && (
+              <button onClick={goNext} style={{ background: 'none', border: 'none', padding: 0 }} aria-label="Next Page">
                 <span className="text-bg">
                   <img
                     src={arrowIcon}
-                    alt="דף הבא"
+                    alt="Next"
                     className="inline-block"
                     style={{ width: '24px', height: '24px' }}
                   />
@@ -169,7 +136,7 @@ const CVTipsPage = () => {
           {/* מונה עמודים */}
           <div className="text-lg mt-4">
             <span className="text-bg">
-              עמוד {pageIndex + 1} מתוך {cvTipsData.length}
+              Page {pageIndex + 1} of {noaGuideData.length}
             </span>
           </div>
         </div>
@@ -178,4 +145,4 @@ const CVTipsPage = () => {
   );
 };
 
-export default CVTipsPage;
+export default NoaGuidePage;

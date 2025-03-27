@@ -1,4 +1,7 @@
 /* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* משתני CSS עבור Light Mode (ברירת המחדל) */
 :root {
@@ -31,9 +34,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* אפקט רקע מונפש (אם רלוונטי) */
+/* אפקט רקע מונפש (animated-gradient) */
 .animated-gradient {
+  background: linear-gradient(135deg, #32CD32, #FFFF00);
   background-size: 400% 400%;
+  background-position: center center;
+  background-repeat: no-repeat;
   animation: gradientAnimation 15s ease infinite;
 }
 
@@ -63,17 +69,15 @@ code {
   filter: brightness(0) invert(1);
 }
 
-/* במקום padding-left, נעשה padding אופקי סימטרי */
-p {
-  padding: 0 1em; /* רווח 1em מכל צד */
+/* עדכון עבור פסקאות וכותרות עם CSS Logical Properties */
+p, h1, h2, h3, h4, h5, h6 {
+  padding-block: 0;
+  padding-inline: 1em;
   text-indent: 0;
-}
-h1, h2, h3, h4, h5, h6 {
-  padding: 0 1em; /* רווח 1em מכל צד */
-  text-indent: 0;
+  text-align: center;  /* ממרכז את הטקסט */
 }
 
-/* כפתור "Alon's Ten Steps" – נשאר כמו שהיה */
+/* כפתור "Alon's Ten Steps" (וגם שאר הכפתורים) */
 .alon-button {
   background: linear-gradient(45deg, #1e3a8a, #3b82f6);
   color: #ffffff;
@@ -85,7 +89,8 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   cursor: pointer;
-  transform: translateX(40px);
+  /* הסרנו את השורה הבאה כדי למנוע הזזה אופקית: */
+  /* transform: translateX(40px); */
 }
 
 .alon-button:hover {
@@ -108,18 +113,17 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(45deg, #2B3035, #23272B);
 }
 
-/* === כיסוי רקע שקוף + טקסט לבן במצב חשוך === */
+/* כיסוי רקע שקוף + טקסט לבן במצב חשוך */
 .text-bg {
-  display: inline-block; /* רקע סביב הטקסט */
+  display: inline-block;
   background-color: rgba(255, 255, 255, 0.8);
   color: var(--text-color);
-  padding: 0.5rem 0.75rem; /* רווח פנימי בתוך הבועה */
-  margin: 0 1rem;         /* רווח אופקי שווה משני הצדדים */
+  padding: 0.5rem 0.75rem;
+  margin: 0 1rem;
   border-radius: 0.5rem;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* במצב Dark, הרקע הופך לשחור-שקוף והטקסט ללבן */
 .dark .text-bg {
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;

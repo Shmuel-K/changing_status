@@ -1,26 +1,37 @@
 // src/pages/LandingPage.jsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import warningIcon from '../img/warning.svg';
+import { LanguageContext } from '../context/LanguageContext';
+import landingPageEn from '../locales/en/landingPage';
+import landingPageHe from '../locales/he/landingPage';
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const { language } = useContext(LanguageContext);
+  const text = language === 'en' ? landingPageEn : landingPageHe;
 
   useEffect(() => {
-    // Disable scrolling on the landing page
+    // מונע גלילה בעמוד הנחיתה
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, []);
 
+  const [showNotice, setShowNotice] = useState(false);
+
   const handleAlonClick = () => {
     navigate('/page/1');
   };
 
-  const handleCvtips = () => {
-    navigate('/cv-tips');
+  const handleMeyravClick = () => {
+    navigate('/meet-meyrav');
+  };
+
+  const handleNoaClick = () => {
+    navigate('/noa-guide');
   };
 
   return (
@@ -30,63 +41,75 @@ const LandingPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
       className="relative animated-gradient"
-      style={{
-        paddingTop: '60px',
-        minHeight: 'calc(100vh - 60px)',
-        backgroundImage: 'linear-gradient(135deg, #32CD32, #FFFF00)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
+      style={{ paddingTop: '60px', minHeight: 'calc(100vh - 60px)' }}
     >
-      {/* Overlay for improved text contrast */}
+      {/* שכבת אוברליי לשיפור הניגודיות */}
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
-      {/* Page content */}
+      {/* תוכן העמוד */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-full">
-        <h1 className="text-white text-4xl font-bold mb-8 text-center px-4">
-          Welcome to Your Next Step in High-Tech
-        </h1>
-        <button
-          onClick={handleAlonClick}
-          className="alon-button mb-8"
-          aria-label="Start Alon's Ten Steps"
-        >
-          Alon's Ten Steps
-        </button>
-        <button
-          onClick={handleCvtips}
-          className="alon-button mb-4"
-          aria-label="CV Tips"
-        >
-          Meyrav's CV Tips
-        </button>
+        {/* בועה ממורכזת – הסרנו מחלקות כמו inline-block ו-max-w-3xl */}
+        <div className="landing-bubble bg-white bg-opacity-80 p-6 rounded-lg shadow-lg">
+          <p className="text-black text-2xl font-bold">
+            {text.description}
+          </p>
+        </div>
+
+        {/* כפתורים */}
+        <div className="mt-8 flex flex-col items-center">
+          <button
+            onClick={handleAlonClick}
+            className="alon-button mb-4"
+            aria-label={text.alonButton}
+          >
+            {text.alonButton}
+          </button>
+          <button
+            onClick={handleMeyravClick}
+            className="alon-button mb-4"
+            aria-label={text.meyravButton}
+          >
+            {text.meyravButton}
+          </button>
+          <button
+            onClick={handleNoaClick}
+            className="alon-button mb-4"
+            aria-label={text.noaButton}
+          >
+            {text.noaButton}
+          </button>
+        </div>
       </div>
 
-      {/* Bottom left notice */}
+      {/* אייקון לחיץ + טקסט "Under Construction" */}
       <div
-        className="text-bg flex items-center"
+        className="absolute flex flex-col items-start text-bg"
         style={{
-          position: 'absolute',
           bottom: '20px',
           left: '20px',
         }}
       >
         <img
           src={warningIcon}
-          alt="Under Construction"
-          style={{
-            width: '40px',
-            height: '40px',
-            marginRight: '20px',
-            transform: 'translateX(10px)',
-          }}
+          alt={text.underConstruction}
+          style={{ width: '40px', height: '40px', cursor: 'pointer' }}
+          onClick={() => setShowNotice(!showNotice)}
         />
-        <p className="text-base">
-          Website Under Construction
-          <br />
-          I'd appreciate your feedback on my LinkedIn page.
-        </p>
+
+        <AnimatePresence>
+          {showNotice && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.3 }}
+              className="mt-2 bg-white text-black p-4 rounded shadow-md"
+              style={{ maxWidth: '220px' }}
+            >
+              <p className="text-base">{text.underConstruction}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.div>
   );
