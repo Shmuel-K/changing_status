@@ -5,7 +5,7 @@
   max-width: 900px;            /* מגביל את הרוחב */
   margin-inline: auto;         /* מרכז אופקית בהתאם לכיוון */
   padding-block: 20px;         /* רווח אנכי למעלה ולמטה */
-  padding-inline: 2rem;        /* רווח אופקי נמוך יותר (במקום 200px) */
+  padding-inline: 2rem;        /* רווח אופקי נמוך יותר */
   text-align: center;          /* ממרכז את הטקסט והאלמנטים */
 }
 
@@ -16,7 +16,7 @@
   margin-right: auto;
   max-width: 600px;            /* רוחב מקסימלי לבועה */
   width: 100%;
-  text-align: center;          /* ממרכז את הטקסט בתוך הבועה */
+  text-align: center;
 }
 
 /* כותרות */
@@ -44,7 +44,7 @@ nav ul li {
 /* התאמות למסכים צרים */
 @media screen and (max-width: 768px) {
   .container {
-    padding-inline: 1rem;    /* מפחיתים רווח אופקי במסכים צרים */
+    padding-inline: 1rem;
   }
   .landing-bubble {
     max-width: 90%;

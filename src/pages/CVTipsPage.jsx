@@ -1,3 +1,4 @@
+// src/pages/CVTipsPage.jsx
 import React, { useEffect, useRef, useCallback, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -8,10 +9,8 @@ import cvTipsDataEn from '../locales/en/cvTipsData';
 import cvTipsDataHe from '../locales/he/cvTipsData';
 
 const CVTipsPage = () => {
-  // שימוש בהקשר השפה
   const { language } = useContext(LanguageContext);
   const cvTipsData = language === 'en' ? cvTipsDataEn : cvTipsDataHe;
-
   const { id } = useParams();
   const navigate = useNavigate();
   const pageIndex = id ? parseInt(id, 10) - 1 : 0;
@@ -32,7 +31,6 @@ const CVTipsPage = () => {
     }
   }, [pageIndex, navigate]);
 
-  // אופטימיזציה של אירועי גלילה באמצעות requestAnimationFrame
   useEffect(() => {
     if (!valid) return;
     let ticking = false;
@@ -57,13 +55,12 @@ const CVTipsPage = () => {
     return () => window.removeEventListener('wheel', handleWheel);
   }, [pageIndex, goNext, goPrev, valid, cvTipsData.length]);
 
-  // סגירת בלון הפעולה במעבר עמוד
   useEffect(() => {
     setShowAction(false);
   }, [pageIndex]);
 
   if (!valid) {
-    return <div>דף לא נמצא</div>;
+    return <div>{language === 'en' ? "Page Not Found" : "דף לא נמצא"}</div>;
   }
 
   const { title, paragraphs, bullets, action, background } = cvTipsData[pageIndex];
@@ -76,22 +73,10 @@ const CVTipsPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      style={{
-        height: 'calc(100vh - 60px)',
-        background: background,
-      }}
+      style={{ height: 'calc(100vh - 60px)', background: background }}
     >
-      {/* שכבת אוברליי */}
-      <div
-        className="absolute inset-0 bg-black bg-opacity-30"
-        style={{ zIndex: 1 }}
-      ></div>
-      
-      {/* קונטיינר התוכן */}
-      <div
-        className="container flex flex-col justify-center h-full text-left p-8"
-        style={{ position: 'relative', zIndex: 10, color: '#000' }}
-      >
+      <div className="absolute inset-0 bg-black bg-opacity-30" style={{ zIndex: 1 }}></div>
+      <div className="container flex flex-col justify-center h-full text-left p-8" style={{ position: 'relative', zIndex: 10, color: '#000' }}>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           <span className="text-bg">{title}</span>
         </h1>
@@ -117,7 +102,7 @@ const CVTipsPage = () => {
             >
               <img
                 src={lightBulbIcon}
-                alt="פעולה"
+                alt={language === 'en' ? "Action" : "פעולה"}
                 style={{ width: '100px', height: '100px', transform: 'translateX(10px)' }}
               />
             </button>
@@ -128,21 +113,18 @@ const CVTipsPage = () => {
             )}
           </div>
         )}
-
-        {/* אזור הניווט והעמוד */}
         <div className="text-center mt-8">
-          {/* כפתורי קודם / הבא */}
           <div className="space-x-4">
             {pageIndex > 0 && (
               <button
                 onClick={goPrev}
                 style={{ background: 'none', border: 'none', padding: 0 }}
-                aria-label="דף קודם"
+                aria-label={language === 'en' ? "Previous Page" : "דף קודם"}
               >
                 <span className="text-bg">
                   <img
                     src={arrowIcon}
-                    alt="דף קודם"
+                    alt={language === 'en' ? "Previous" : "דף קודם"}
                     className="inline-block"
                     style={{ width: '24px', height: '24px', transform: 'rotate(180deg)' }}
                   />
@@ -153,12 +135,12 @@ const CVTipsPage = () => {
               <button
                 onClick={goNext}
                 style={{ background: 'none', border: 'none', padding: 0 }}
-                aria-label="דף הבא"
+                aria-label={language === 'en' ? "Next Page" : "דף הבא"}
               >
                 <span className="text-bg">
                   <img
                     src={arrowIcon}
-                    alt="דף הבא"
+                    alt={language === 'en' ? "Next" : "דף הבא"}
                     className="inline-block"
                     style={{ width: '24px', height: '24px' }}
                   />
@@ -166,10 +148,11 @@ const CVTipsPage = () => {
               </button>
             )}
           </div>
-          {/* מונה עמודים */}
           <div className="text-lg mt-4">
             <span className="text-bg">
-              עמוד {pageIndex + 1} מתוך {cvTipsData.length}
+              {language === 'en'
+                ? `Page ${pageIndex + 1} of ${cvTipsData.length}`
+                : `עמוד ${pageIndex + 1} מתוך ${cvTipsData.length}`}
             </span>
           </div>
         </div>

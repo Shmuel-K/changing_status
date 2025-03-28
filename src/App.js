@@ -15,7 +15,7 @@ import './App.css'; // מייבאים את הסגנונות
 function AppContent() {
   const location = useLocation();
   const { language } = useContext(LanguageContext);
-  // במידה והלשון היא עברית, כיוון rtl, אחרת ltr
+  // אם השפה עברית – כיוון rtl, אחרת ltr
   const direction = language === 'he' ? 'rtl' : 'ltr';
 
   return (

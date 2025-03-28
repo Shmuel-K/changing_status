@@ -1,18 +1,20 @@
 // src/pages/MeetMeyrav.jsx
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import meyravImage from '../img/Meyrav.jpeg';
 import linkedinIcon from '../img/linkedin-social-media-svgrepo-com.svg';
+import { LanguageContext } from '../context/LanguageContext';
+import meetMeyravEn from '../locales/en/meetMeyrav';
+import meetMeyravHe from '../locales/he/meetMeyrav';
 
 const MeetMeyrav = () => {
   const navigate = useNavigate();
+  const { language } = useContext(LanguageContext);
+  const text = language === 'en' ? meetMeyravEn : meetMeyravHe;
 
-  const handleNext = () => {
-    navigate('/cv-tips');
-  };
+  const handleNext = () => { navigate('/cv-tips'); };
 
-  // Inline style objects for a completely different method:
   const containerStyle = {
     background: 'linear-gradient(45deg, #32CD32, #FFFF00)',
     display: 'flex',
@@ -24,9 +26,9 @@ const MeetMeyrav = () => {
   };
 
   const imageStyle = {
-    width: '32px', // very small image
+    width: '32px',
     height: '32px',
-    borderRadius: '50%', // circular image
+    borderRadius: '50%',
     marginBottom: '12px'
   };
 
@@ -61,7 +63,7 @@ const MeetMeyrav = () => {
   };
 
   const iconStyle = {
-    width: '8px', // very small icon
+    width: '8px',
     height: '8px',
     marginRight: '4px'
   };
@@ -85,25 +87,21 @@ const MeetMeyrav = () => {
       transition={{ duration: 0.5 }}
       style={containerStyle}
     >
-      <img src={meyravImage} alt="Meyrav" style={imageStyle} />
+      <img src={meyravImage} alt={text.heading} style={imageStyle} />
       <div style={textContainerStyle}>
-        <h1 style={headingStyle}>Meet Meyrav</h1>
-        <p style={paragraphStyle}>
-          My name is Meyrav. I am a graduate of the Hebrew University in the Department of Computer Science,
-          specializing in Google. In my free time, I share posts on LinkedIn and help students who are searching for their
-          first job. I enjoy spending time with my family, playing board games, and reading literature and poetry 😊
-        </p>
+        <h1 style={headingStyle}>{text.heading}</h1>
+        <p style={paragraphStyle}>{text.description}</p>
         <a
-          href="https://www.linkedin.com/in/meyravcg?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BNuQcw7qvSnOzJ4qU3%2FNSSg%3D%3D"
+          href="https://www.linkedin.com/in/meyravcg"
           target="_blank"
           rel="noopener noreferrer"
           style={linkStyle}
         >
           <img src={linkedinIcon} alt="LinkedIn" style={iconStyle} />
-          Connect on LinkedIn
+          {text.linkedinText}
         </a>
         <button onClick={handleNext} style={buttonStyle}>
-          Continue to CV Tips
+          {text.buttonText}
         </button>
       </div>
     </motion.div>

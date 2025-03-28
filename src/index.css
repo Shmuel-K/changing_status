@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* משתני CSS עבור Light Mode (ברירת המחדל) */
+/* משתני CSS עבור Light Mode */
 :root {
   --bg-color: #ffffff;
   --text-color: #333333;
@@ -17,7 +17,6 @@
   --font-size-base: 16px;
 }
 
-/* עיצוב גלובלי */
 body {
   margin: 0;
   padding: 0;
@@ -34,7 +33,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* אפקט רקע מונפש (animated-gradient) */
+/* אפקט רקע מונפש */
 .animated-gradient {
   background: linear-gradient(135deg, #32CD32, #FFFF00);
   background-size: 400% 400%;
@@ -44,18 +43,11 @@ code {
 }
 
 @keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* מצב Dark – כאשר מוסיפים את המחלקה .dark */
 .dark {
   --bg-color: #121212;
   --text-color: #e0e0e0;
@@ -64,20 +56,17 @@ code {
   --link-hover-color: var(--gold);
 }
 
-/* אייקוני חצים במצב Dark */
 .dark .arrow-icon {
   filter: brightness(0) invert(1);
 }
 
-/* עדכון עבור פסקאות וכותרות עם CSS Logical Properties */
 p, h1, h2, h3, h4, h5, h6 {
   padding-block: 0;
   padding-inline: 1em;
   text-indent: 0;
-  text-align: center;  /* ממרכז את הטקסט */
+  text-align: center;
 }
 
-/* כפתור "Alon's Ten Steps" (וגם שאר הכפתורים) */
 .alon-button {
   background: linear-gradient(45deg, #1e3a8a, #3b82f6);
   color: #ffffff;
@@ -89,8 +78,6 @@ p, h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   cursor: pointer;
-  /* הסרנו את השורה הבאה כדי למנוע הזזה אופקית: */
-  /* transform: translateX(40px); */
 }
 
 .alon-button:hover {
@@ -103,7 +90,6 @@ p, h1, h2, h3, h4, h5, h6 {
   transform: scale(0.98);
 }
 
-/* Dark mode adjustments for the button */
 .dark .alon-button {
   background: linear-gradient(45deg, #23272B, #2B3035);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
@@ -113,7 +99,6 @@ p, h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(45deg, #2B3035, #23272B);
 }
 
-/* כיסוי רקע שקוף + טקסט לבן במצב חשוך */
 .text-bg {
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.8);

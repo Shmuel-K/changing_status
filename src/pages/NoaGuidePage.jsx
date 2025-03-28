@@ -1,13 +1,18 @@
-import React, { useEffect, useRef, useCallback, useState } from 'react';
+// src/pages/NoaGuidePage.jsx
+import React, { useEffect, useRef, useCallback, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import noaGuideData from './noaGuideData';
-import arrowIcon from '../img/next-svgrepo-com.svg';
 import { motion } from 'framer-motion';
+import { LanguageContext } from '../context/LanguageContext';
+import noaGuideDataEn from '../locales/en/noaGuideData';
+import noaGuideDataHe from '../locales/he/noaGuideData';
+import arrowIcon from '../img/next-svgrepo-com.svg';
 
 const NoaGuidePage = () => {
+  const { language } = useContext(LanguageContext);
+  const noaGuideData = language === 'en' ? noaGuideDataEn : noaGuideDataHe;
   const { id } = useParams();
   const navigate = useNavigate();
-  // If no id is provided, show the first page (index 0)
+  // אם אין id, מציגים את הדף הראשון (index 0)
   const pageIndex = id ? parseInt(id, 10) - 1 : 0;
   const navigatingRef = useRef(false);
   const [showAction, setShowAction] = useState(false);
@@ -18,7 +23,7 @@ const NoaGuidePage = () => {
     if (pageIndex < noaGuideData.length - 1) {
       navigate(`/noa-guide/${pageIndex + 2}`);
     }
-  }, [pageIndex, navigate]);
+  }, [pageIndex, navigate, noaGuideData.length]);
 
   const goPrev = useCallback(() => {
     if (pageIndex > 0) {
@@ -50,15 +55,15 @@ const NoaGuidePage = () => {
 
     window.addEventListener('wheel', handleWheel);
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [pageIndex, goNext, goPrev, valid]);
+  }, [pageIndex, goNext, goPrev, valid, noaGuideData.length]);
 
-  // Reset action on page change (if needed)
+  // Reset action on page change
   useEffect(() => {
     setShowAction(false);
   }, [pageIndex]);
 
   if (!valid) {
-    return <div>Page Not Found</div>;
+    return <div>{language === 'en' ? "Page Not Found" : "דף לא נמצא"}</div>;
   }
 
   const { title, paragraphs, bullets, action, background } = noaGuideData[pageIndex];
@@ -80,10 +85,10 @@ const NoaGuidePage = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Transparent overlay */}
+      {/* שכבת אוברליי שקופה */}
       <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       
-      {/* Content container */}
+      {/* קונטיינר התוכן */}
       <div className="container flex flex-col justify-center h-full text-left p-8" style={{ position: 'relative', zIndex: 10, color: '#000' }}>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           <span className="text-bg">{title}</span>
@@ -103,17 +108,14 @@ const NoaGuidePage = () => {
           </ul>
         )}
         {/* אין כפתור "Continue" – רק ניווט */}
-
-        {/* אזור הניווט והעמוד */}
         <div className="text-center mt-8">
-          {/* כפתורי קודם / הבא */}
           <div className="space-x-4">
             {pageIndex > 0 && (
-              <button onClick={goPrev} style={{ background: 'none', border: 'none', padding: 0 }} aria-label="Previous Page">
+              <button onClick={goPrev} style={{ background: 'none', border: 'none', padding: 0 }} aria-label={language === 'en' ? "Previous Page" : "דף קודם"}>
                 <span className="text-bg">
                   <img
                     src={arrowIcon}
-                    alt="Previous"
+                    alt={language === 'en' ? "Previous" : "דף קודם"}
                     className="inline-block"
                     style={{ width: '24px', height: '24px', transform: 'rotate(180deg)' }}
                   />
@@ -121,11 +123,11 @@ const NoaGuidePage = () => {
               </button>
             )}
             {pageIndex < noaGuideData.length - 1 && (
-              <button onClick={goNext} style={{ background: 'none', border: 'none', padding: 0 }} aria-label="Next Page">
+              <button onClick={goNext} style={{ background: 'none', border: 'none', padding: 0 }} aria-label={language === 'en' ? "Next Page" : "דף הבא"}>
                 <span className="text-bg">
                   <img
                     src={arrowIcon}
-                    alt="Next"
+                    alt={language === 'en' ? "Next" : "דף הבא"}
                     className="inline-block"
                     style={{ width: '24px', height: '24px' }}
                   />
@@ -133,10 +135,11 @@ const NoaGuidePage = () => {
               </button>
             )}
           </div>
-          {/* מונה עמודים */}
           <div className="text-lg mt-4">
             <span className="text-bg">
-              Page {pageIndex + 1} of {noaGuideData.length}
+              {language === 'en'
+                ? `Page ${pageIndex + 1} of ${noaGuideData.length}`
+                : `עמוד ${pageIndex + 1} מתוך ${noaGuideData.length}`}
             </span>
           </div>
         </div>

@@ -13,26 +13,15 @@ const LandingPage = () => {
   const text = language === 'en' ? landingPageEn : landingPageHe;
 
   useEffect(() => {
-    // מונע גלילה בעמוד הנחיתה
     document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
+    return () => { document.body.style.overflow = 'auto'; };
   }, []);
 
   const [showNotice, setShowNotice] = useState(false);
 
-  const handleAlonClick = () => {
-    navigate('/page/1');
-  };
-
-  const handleMeyravClick = () => {
-    navigate('/meet-meyrav');
-  };
-
-  const handleNoaClick = () => {
-    navigate('/noa-guide');
-  };
+  const handleAlonClick = () => { navigate('/page/1'); };
+  const handleMeyravClick = () => { navigate('/meet-meyrav'); };
+  const handleNoaClick = () => { navigate('/noa-guide'); };
 
   return (
     <motion.div
@@ -43,51 +32,26 @@ const LandingPage = () => {
       className="relative animated-gradient"
       style={{ paddingTop: '60px', minHeight: 'calc(100vh - 60px)' }}
     >
-      {/* שכבת אוברליי לשיפור הניגודיות */}
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-
-      {/* תוכן העמוד */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-full">
-        {/* בועה ממורכזת – הסרנו מחלקות כמו inline-block ו-max-w-3xl */}
         <div className="landing-bubble bg-white bg-opacity-80 p-6 rounded-lg shadow-lg">
-          <p className="text-black text-2xl font-bold">
-            {text.description}
-          </p>
+          <p className="text-black text-2xl font-bold">{text.description}</p>
         </div>
-
-        {/* כפתורים */}
         <div className="mt-8 flex flex-col items-center">
-          <button
-            onClick={handleAlonClick}
-            className="alon-button mb-4"
-            aria-label={text.alonButton}
-          >
+          <button onClick={handleAlonClick} className="alon-button mb-4" aria-label={text.alonButton}>
             {text.alonButton}
           </button>
-          <button
-            onClick={handleMeyravClick}
-            className="alon-button mb-4"
-            aria-label={text.meyravButton}
-          >
+          <button onClick={handleMeyravClick} className="alon-button mb-4" aria-label={text.meyravButton}>
             {text.meyravButton}
           </button>
-          <button
-            onClick={handleNoaClick}
-            className="alon-button mb-4"
-            aria-label={text.noaButton}
-          >
+          <button onClick={handleNoaClick} className="alon-button mb-4" aria-label={text.noaButton}>
             {text.noaButton}
           </button>
         </div>
       </div>
-
-      {/* אייקון לחיץ + טקסט "Under Construction" */}
       <div
         className="absolute flex flex-col items-start text-bg"
-        style={{
-          bottom: '20px',
-          left: '20px',
-        }}
+        style={{ bottom: '20px', left: '20px' }}
       >
         <img
           src={warningIcon}
@@ -95,7 +59,6 @@ const LandingPage = () => {
           style={{ width: '40px', height: '40px', cursor: 'pointer' }}
           onClick={() => setShowNotice(!showNotice)}
         />
-
         <AnimatePresence>
           {showNotice && (
             <motion.div
