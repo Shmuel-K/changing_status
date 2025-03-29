@@ -1,6 +1,7 @@
 // src/components/Footer.jsx
 import React from 'react';
-import linkedInIcon from '../img/icons8-linkedin.svg'; // וודא שזה הנתיב הנכון
+import linkedInIcon from '../img/icons8-linkedin.svg'; // ודא שהנתיב נכון
+// ייבוא warningIcon הוסר
 import './Footer.css';
 
 const Footer = () => {
@@ -11,11 +12,9 @@ const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img
-          src={linkedInIcon}
-          alt="LinkedIn"
-        />
+        <img src={linkedInIcon} alt="LinkedIn" />
       </a>
+      {/* אלמנט האייקון אזהרה הוסר */}
     </footer>
   );
 };

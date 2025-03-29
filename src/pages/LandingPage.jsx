@@ -1,8 +1,7 @@
 // src/pages/LandingPage.jsx
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import warningIcon from '../img/warning.svg';
+import { motion } from 'framer-motion';
 import { LanguageContext } from '../context/LanguageContext';
 import landingPageEn from '../locales/en/landingPage';
 import landingPageHe from '../locales/he/landingPage';
@@ -16,8 +15,6 @@ const LandingPage = () => {
     document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = 'auto'; };
   }, []);
-
-  const [showNotice, setShowNotice] = useState(false);
 
   const handleAlonClick = () => { navigate('/page/1'); };
   const handleMeyravClick = () => { navigate('/meet-meyrav'); };
@@ -58,32 +55,7 @@ const LandingPage = () => {
           </button>
         </div>
       </div>
-      {/* עדכון: שימוש ב-position: fixed כדי להזיז את בלוק "Under Construction" למטה */}
-      <div
-        className="fixed flex flex-col items-start text-bg"
-        style={{ bottom: '200px', left: '20px', zIndex: 9999 }}
-      >
-        <img
-          src={warningIcon}
-          alt={text.underConstruction}
-          style={{ width: '40px', height: '40px', cursor: 'pointer' }}
-          onClick={() => setShowNotice(!showNotice)}
-        />
-        <AnimatePresence>
-          {showNotice && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.3 }}
-              className="mt-2 bg-white text-black p-4 rounded shadow-md"
-              style={{ maxWidth: '220px' }}
-            >
-              <p className="text-base">{text.underConstruction}</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      {/* קטע האייקון אזהרה הוסר */}
     </motion.div>
   );
 };

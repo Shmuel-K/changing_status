@@ -78,3 +78,11 @@ nav ul li {
   background-color: var(--link-hover-color);
   transform: scale(1.05);
 }
+
+/* מחלקת fixed-warning - להצבת אלמנטים בתחתית המסך */
+.fixed-warning {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  z-index: 9999;
+}

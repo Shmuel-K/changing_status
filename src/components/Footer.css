@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;              /* רווח של 10px בין האייקונים */
   background-color: transparent;
   padding: 10px;
   z-index: 1000;
@@ -16,10 +17,10 @@
 /* אלמנט העוגן (a) שעוטף את האייקון */
 .site-footer a {
   display: inline-block;
-  background-color: rgba(255, 255, 255, 0.8); /* רקע לבן-שקוף */
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 8px;
-  border-radius: 10px; /* פינות מעוגלות */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* צל קטן מסביב */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
@@ -29,7 +30,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* הגודל של האייקון עצמו */
+/* הגודל של האייקונים */
 .site-footer img {
   width: 30px;
   height: 30px;
