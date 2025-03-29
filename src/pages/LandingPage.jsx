@@ -37,21 +37,31 @@ const LandingPage = () => {
         <div className="landing-bubble bg-white bg-opacity-80 p-6 rounded-lg shadow-lg">
           <p className="text-black text-2xl font-bold">{text.description}</p>
         </div>
-        <div className="mt-8 flex flex-col items-center">
-          <button onClick={handleAlonClick} className="alon-button mb-4" aria-label={text.alonButton}>
+        {/* קונטיינר הכפתורים עם סגנון inline */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1.5rem',
+            marginTop: '2rem'
+          }}
+        >
+          <button onClick={handleAlonClick} className="alon-button" aria-label={text.alonButton}>
             {text.alonButton}
           </button>
-          <button onClick={handleMeyravClick} className="alon-button mb-4" aria-label={text.meyravButton}>
+          <button onClick={handleMeyravClick} className="alon-button" aria-label={text.meyravButton}>
             {text.meyravButton}
           </button>
-          <button onClick={handleNoaClick} className="alon-button mb-4" aria-label={text.noaButton}>
+          <button onClick={handleNoaClick} className="alon-button" aria-label={text.noaButton}>
             {text.noaButton}
           </button>
         </div>
       </div>
+      {/* עדכון: שימוש ב-position: fixed כדי להזיז את בלוק "Under Construction" למטה */}
       <div
-        className="absolute flex flex-col items-start text-bg"
-        style={{ bottom: '20px', left: '20px' }}
+        className="fixed flex flex-col items-start text-bg"
+        style={{ bottom: '200px', left: '20px', zIndex: 9999 }}
       >
         <img
           src={warningIcon}

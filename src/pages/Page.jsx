@@ -101,6 +101,7 @@ const Page = () => {
             ))}
           </ul>
         )}
+        {/* קטע אייקון הנורה - מופיע רק אם יש ערך action */}
         {action && (
           <div className="mt-6 ml-8">
             <button
