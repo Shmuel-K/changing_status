@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useCallback, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import arrowIcon from '../img/next-svgrepo-com.svg';
-import lightBulbIcon from '../img/next-svgrepo-com.svg';
+import lightBulbIcon from '../img/light-bulb-svgrepo-com.svg'; // עדכון: יבוא אייקון נורה
 import { motion } from 'framer-motion';
 import { LanguageContext } from '../context/LanguageContext';
 import pagesDataEn from '../locales/en/pagesData';
@@ -101,7 +101,7 @@ const Page = () => {
             ))}
           </ul>
         )}
-        {/* קטע אייקון הנורה - מופיע רק אם יש ערך action */}
+        {/* אייקון הנורה עבור "Action to take" */}
         {action && (
           <div className="mt-6 ml-8">
             <button
