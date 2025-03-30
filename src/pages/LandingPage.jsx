@@ -32,9 +32,11 @@ const LandingPage = () => {
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       <div className="relative z-10 flex flex-col items-center justify-center min-h-full">
         <div className="landing-bubble bg-white bg-opacity-80 p-6 rounded-lg shadow-lg">
-          <p className="text-black text-2xl font-bold">{text.description}</p>
+          <p className="text-bg shadow-md text-lg leading-relaxed">
+            {text.description}
+          </p>
         </div>
-        {/* קונטיינר הכפתורים עם סגנון inline */}
+
         <div
           style={{
             display: 'flex',
@@ -55,7 +57,6 @@ const LandingPage = () => {
           </button>
         </div>
       </div>
-      {/* קטע האייקון אזהרה הוסר */}
     </motion.div>
   );
 };
