@@ -41,11 +41,11 @@ const Header = () => {
   ];
 
   return (
+    // שימוש ב-dir="ltr" מבטיח שהתצוגה לא תשתנה לפי כיוון השפה
     <header className="site-header" dir="ltr">
       <h2 className="site-title">Changing Your Status</h2>
 
       <div className="header-icons">
-        {/* כפתור מצב בהיר/כהה */}
         <button className="dark-mode-toggle" onClick={toggleDarkMode}>
           <img
             src={darkThemeIcon}
@@ -54,7 +54,6 @@ const Header = () => {
           />
         </button>
 
-        {/* כפתור החלפת שפה (דגל) */}
         <button className="language-toggle" onClick={toggleLanguage}>
           <img
             src={language === 'en' ? israelFlagIcon : usFlagIcon}
@@ -64,7 +63,6 @@ const Header = () => {
         </button>
       </div>
 
-      {/* תפריט ניווט - לא מוצג בדף הנחיתה */}
       {!isLandingPage && (
         <nav className="header-nav">
           <button className="menu-toggle" onClick={toggleMenu}>

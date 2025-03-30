@@ -12,6 +12,7 @@
   position: relative; /* מאפשר מיקום מוחלט לאייקונים */
 }
 
+/* כותרת ההדר */
 .site-title {
   margin: 0;
   color: var(--text-color);
@@ -45,16 +46,17 @@
   height: 24px;
 }
 
-/* מעביר לאייקון מצב כהה (עושה אינברט) */
+/* אפקט לאייקון מצב כהה */
 .icon-img.dark {
   filter: brightness(0) invert(1);
 }
 
-/* עיצוב תפריט הניווט */
+/* תפריט ניווט */
 .header-nav {
   margin-top: 10px;
 }
 
+/* עיצוב תפריט ניווט – שולחן עבודה */
 .header-nav ul {
   list-style: none;
   display: flex;
@@ -87,10 +89,38 @@
 
 /* עיצוב למובייל */
 @media (max-width: 768px) {
+  /* מארגנים את ההדר בשורה ומאפשרים גלישה לשורה שנייה */
+  .site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+  
+  /* כותרת תופסת את כל השטח שנשאר ומיושרת משמאל */
+  .site-title {
+    flex: 1;
+    text-align: left;
+  }
+  
+  /* האייקונים יהיו חלק מהזרימה (ולא מיקום אבסולוטי) */
+  .header-icons {
+    position: static;
+    transform: none;
+  }
+  
+  /* תפריט הניווט תופס שורה מלאה מתחת */
+  .header-nav {
+    flex-basis: 100%;
+    margin-top: 10px;
+  }
+  
+  /* כפתור המבורגר מוצג במובייל */
   .menu-toggle {
     display: block;
   }
-
+  
   .header-nav ul {
     display: none;
     flex-direction: column;
@@ -104,7 +134,7 @@
     text-align: center;
     transition: all 0.3s ease-in-out;
   }
-
+  
   .header-nav ul.open {
     display: flex;
   }
