@@ -1,44 +1,81 @@
 /* src/components/Header.css */
 
-/* Main header styling */
+/* מבנה כללי של ההדר */
 .site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--header-bg);
-  padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: var(--header-bg);
+  padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative; /* מאפשר מיקום מוחלט לאייקונים */
 }
 
-.site-header .logo h2 {
+.site-title {
   margin: 0;
   color: var(--text-color);
+  font-size: 1.5rem;
 }
 
-/* Desktop navigation menu */
-.site-header nav ul {
+/* עיצוב לאייקונים בצד ימין */
+.header-icons {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ביטול מסגרת והרקע של הכפתורים */
+.header-icons button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+/* עיצוב בסיסי לתמונות האייקונים */
+.icon-img {
+  width: 24px;
+  height: 24px;
+}
+
+/* מעביר לאייקון מצב כהה (עושה אינברט) */
+.icon-img.dark {
+  filter: brightness(0) invert(1);
+}
+
+/* עיצוב תפריט הניווט */
+.header-nav {
+  margin-top: 10px;
+}
+
+.header-nav ul {
   list-style: none;
   display: flex;
   gap: 15px;
+  justify-content: center;
   margin: 0;
   padding: 0;
 }
 
-.site-header nav ul li a {
+.header-nav ul li a {
   color: var(--text-color);
   text-decoration: none;
   transition: color 0.3s;
 }
 
-.site-header nav ul li a:hover,
-.site-header nav ul li a.active {
+.header-nav ul li a:hover,
+.header-nav ul li a.active {
   color: var(--gold);
 }
 
-/* Hamburger menu button - hidden on desktop by default */
+/* כפתור תפריט המבורגר – מוסתר בשולחן העבודה */
 .menu-toggle {
   display: none;
   font-size: 2rem;
@@ -48,18 +85,13 @@
   cursor: pointer;
 }
 
-/* Adjusted rule for dark/light toggle on the landing page */
-.landing-toggle {
-  margin-left: 25px;
-}
-
-/* Mobile styles */
+/* עיצוב למובייל */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
   }
-  
-  .site-header nav ul {
+
+  .header-nav ul {
     display: none;
     flex-direction: column;
     position: absolute;
@@ -72,12 +104,8 @@
     text-align: center;
     transition: all 0.3s ease-in-out;
   }
-  
-  .site-header nav ul.open {
+
+  .header-nav ul.open {
     display: flex;
-  }
-  
-  .dark-mode-toggle img {
-    transform: translate(-30px, -30px);
   }
 }
