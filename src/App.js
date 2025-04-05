@@ -8,6 +8,7 @@ import Page from './pages/Page';
 import CVTipsPage from './pages/CVTipsPage';
 import MeetMeyrav from './pages/MeetMeyrav';
 import NoaGuidePage from './pages/NoaGuidePage';
+import JobSearch from './components/JobSearch';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css'; // מייבאים את הסגנונות
@@ -30,6 +31,7 @@ function AppContent() {
           <Route path="/meet-meyrav" element={<MeetMeyrav />} />
           <Route path="/noa-guide" element={<NoaGuidePage />} />
           <Route path="/noa-guide/:id" element={<NoaGuidePage />} />
+          <Route path="/job-search" element={<JobSearch />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AnimatePresence>
