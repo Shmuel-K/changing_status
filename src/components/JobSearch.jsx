@@ -18,8 +18,8 @@ const JobSearch = () => {
     try {
       const API_ID = '51206c69';
       const API_KEY = '49926983cdd3b7de367c20914dff389e';
-      // Assume the market is Israel ('il'); change as needed (e.g. 'us', 'gb', etc.)
-      const country = 'il';
+      // השתמש בקוד מדינה הנתמך על ידי Adzuna, לדוגמה 'us'
+      const country = 'us';
       const endpoint = `https://api.adzuna.com/v1/api/jobs/${country}/search/1`;
 
       const params = {
