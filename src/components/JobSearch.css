@@ -41,3 +41,21 @@
   padding: 8px;
   border-bottom: 1px solid #eee;
 }
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+  .job-search form {
+    flex-direction: column;
+  }
+  
+  .job-search input,
+  .job-search button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .job-search button {
+    padding: 12px;
+    margin-top: 10px;
+  }
+}

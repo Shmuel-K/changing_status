@@ -10,10 +10,10 @@ import './Header.css';
 const Header = () => {
   const location = useLocation();
   const isLandingPage = location.pathname === "/";
-  const isJobSearchPage = location.pathname === "/job-search";
-  const isSingleLinkOnly = 
-    location.pathname.startsWith("/cv-tips") || 
-    location.pathname.startsWith("/noa-guide") || 
+  // עבור הדפים בהם מציגים קישור יחיד (כמו במצבי CV Tips, Noa's Guide, Meet Meyrav)
+  const isSingleLinkOnly =
+    location.pathname.startsWith("/cv-tips") ||
+    location.pathname.startsWith("/noa-guide") ||
     location.pathname === "/meet-meyrav";
   const activePage = location.pathname;
   const [isOpen, setIsOpen] = useState(false);
@@ -64,21 +64,21 @@ const Header = () => {
       </div>
 
       {isLandingPage ? (
-        // בעמוד הבית – מציגים רק את קישור "Job Search"
+        // בעמוד הבית – מציגים רק קישור "Home" (ללא קישור ל־Job Search)
         <nav className="header-nav">
           <ul>
             <li>
               <Link
-                to="/job-search"
-                className={activePage === "/job-search" ? "active" : ""}
+                to="/"
+                className={activePage === "/" ? "active" : ""}
               >
-                Job Search
+                Home
               </Link>
             </li>
           </ul>
         </nav>
-      ) : (isJobSearchPage || isSingleLinkOnly) ? (
-        // בעמוד Job Search ובדפים של Meyrav's CV Tips, Noa's Guide, meet-meyrav – מציגים רק את קישור "Home"
+      ) : isSingleLinkOnly ? (
+        // בדפים כמו CV Tips, Noa's Guide, Meet Meyrav – מציגים רק קישור "Home"
         <nav className="header-nav">
           <ul>
             <li>
@@ -92,7 +92,7 @@ const Header = () => {
           </ul>
         </nav>
       ) : (
-        // בכל שאר העמודים – מציגים את התפריט המלא
+        // בכל שאר העמודים – מציגים את התפריט המלא ללא קישור "Job Search"
         <nav className="header-nav">
           <button className="menu-toggle" onClick={toggleMenu}>
             ☰
@@ -116,15 +116,6 @@ const Header = () => {
                 onClick={() => setIsOpen(false)}
               >
                 Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/job-search"
-                className={activePage === "/job-search" ? "active" : ''}
-                onClick={() => setIsOpen(false)}
-              >
-                Job Search
               </Link>
             </li>
           </ul>
