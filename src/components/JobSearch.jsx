@@ -1,7 +1,7 @@
 // src/components/JobSearch.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import './JobSearch.css'; // אם יש לך קובץ CSS לעיצוב
+import './JobSearch.css'; // שמור את העיצוב הקיים
 
 const JobSearch = () => {
   const [keyword, setKeyword] = useState('');
