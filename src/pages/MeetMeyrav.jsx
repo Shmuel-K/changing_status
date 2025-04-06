@@ -40,26 +40,27 @@ const MeetMeyrav = () => {
     textAlign: 'center'
   };
 
+  // הגדלת הגופנים:
   const headingStyle = {
-    fontSize: '16px',
+    fontSize: '24px', // הגדלנו מ-16px
     fontWeight: 'bold',
-    marginBottom: '8px'
+    marginBottom: '12px'
   };
 
   const paragraphStyle = {
-    fontSize: '12px',
-    marginBottom: '8px'
+    fontSize: '18px', // הגדלנו מ-12px
+    marginBottom: '12px'
   };
 
   const linkStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '12px',
+    fontSize: '18px', // הגדלנו מ-12px
     fontWeight: '600',
     color: '#0A66C2',
     textDecoration: 'none',
-    marginBottom: '8px'
+    marginBottom: '12px'
   };
 
   const iconStyle = {
@@ -70,12 +71,12 @@ const MeetMeyrav = () => {
 
   const buttonStyle = {
     width: '100%',
-    padding: '6px',
+    padding: '8px', // הגדלנו מעט את הפדינג
     backgroundColor: '#0077b5',
     color: '#fff',
     border: 'none',
     borderRadius: '4px',
-    fontSize: '12px',
+    fontSize: '18px', // הגדלנו מ-12px
     cursor: 'pointer'
   };
 
